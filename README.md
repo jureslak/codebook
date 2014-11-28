@@ -17,4 +17,4 @@ Each algorithm is equipped with informational header including:
  * additional notes
  * implementation in C++ (at least)
 
-Jure Slak  
+Jure Slak

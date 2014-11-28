@@ -1,0 +1,93 @@
+\documentclass[a4paper,oneside,12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[usenames]{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage[colorlinks=true,
+  linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black,
+  menucolor=black, runcolor=black, urlcolor=black, pdfencoding=unicode,
+  bookmarks=true, bookmarksopenlevel=2
+]{hyperref}
+\usepackage[
+  paper=a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  textwidth=15cm,
+]{geometry}
+
+\usepackage{icomma}
+\usepackage{units}
+\usepackage{minted}
+
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+
+\newenvironment{description*}%
+{
+\begin{description}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{2pt}
+}
+{\end{description}}
+
+\newcommand{\mytitle}{Codebook}
+\title{\mytitle}
+\author{Jure Slak}
+\date{\today}
+\hypersetup{pdftitle={\mytitle}}
+\hypersetup{pdfauthor={Jure Slak}}
+\hypersetup{pdfsubject={}}
+
+\newmintedfile[cppsource]{c++}{linenos=true, mathescape, xleftmargin=0.7cm,
+               fontsize=\scriptsize,baselinestretch=0.9, firstline=0,
+               lastline=}
+\newmintedfile[pysource]{python}{linenos=true, mathescape, xleftmargin=0.7cm,
+               fontsize=\scriptsize,baselinestretch=0.9}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\vspace*{\fill}
+\begin{center}
+  \scalebox{6}{\texttt{Codebook}}\\[6ex]
+  \scalebox{2}{Pitoni\textbf{++}}\\[4ex]
+  Žiga Gosar, Maks Kolman, Jure Slak
+  \vfill
+  verzija: \today
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Teorija števil}
+\label{sec:ts}
+
+\subsection{Evklidov algoritem}
+\label{sec:ts:evk}
+
+\begin{description*}
+  \item[Vhod:] $a, b \in \Z$
+  \item[Izhod:] Največji skupni delitelj $a$ in $b$. Za pozitivna števila je
+    pozitiven, če je eno število 0, je rezultat drugo število, pri negativnih je
+    predznak odvisen od števila iteracij.
+  \item[Časovna zahtevnost:] $O(\log n)$
+  \item[Prostorska zahtevnost:] $O(1)$
+\end{description*}
+\cppsource{implementacija/ts/gcd.h}
+
+\end{document}
+% vim: spell spelllang=sl
+% vim: foldlevel=99
