@@ -14,7 +14,7 @@ Vsak algoritem vsebuje naslednje podatke:
  * izhod
  * časovna zahtevnost
  * prostorska zahtevnost
- * implementacijo v C++ (lahko tudi še v kakšnem jeziku), v datoteki `algotitem.h`
+ * implementacijo v C++ (lahko tudi še v kakšnem jeziku), v datoteki `algoritem.h`
  * testi, ki preverjajo pravilno delovanje, v datoteki `algoritem_test.cpp`
  * dokaz testiranja na terenu (link do naloge)
  * dodatne opombe
