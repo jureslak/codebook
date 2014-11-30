@@ -25,7 +25,7 @@ USER_DIR = ../implementacija
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra -pthread -std=c++11
+CXXFLAGS += -g -I../ -Wall -Wextra -pthread -std=c++11 -O2
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -71,10 +71,11 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
+HDR = $(shell find $(USER_DIR) -name *.h)
 SRC = $(shell find $(USER_DIR) -name *.cpp)
 OBJ = $(SRC:%.cpp=%.o)
 
-gcd_test.o : $(SRC) $(GTEST_HEADERS)
+tests : $(SRC) $(HDR) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(SRC)
 
 run_tests : $(OBJ) gtest_main.a
