@@ -1,0 +1,4 @@
+test/run_tests
+test/*.o
+test/*.a
+implementacija/*/.ycm*
