@@ -3,7 +3,7 @@ Codebook
 
 To je zbirka implementacij algoritmov, ki se pogosto popjavljajo na programerkih
 tekmovanjih. Implementacije smo nabirali skozi leta, zdaj pa smo se jih odločili
-zbrati na enem mestu. Algoritmi so implemetirani vsak v svoji .h datoteki in
+zbrati na enem mestu. Algoritmi so implemetirani vsak v svoji datoteki in
 vključeni v glavni dokument.
 
 Algorithms
@@ -14,20 +14,23 @@ Vsak algoritem vsebuje naslednje podatke:
  * izhod
  * časovna zahtevnost
  * prostorska zahtevnost
- * implementacijo v C++ (lahko tudi še v kakšnem jeziku), v datoteki `algotitem.h`
- * testi, ki preverjajo pravilno delovanje, v datoteki `algoritem_test.cpp`
- * dokaz testiranja na terenu (link do naloge)
- * dodatne opombe
+ * implementacijo v C++ (lahko tudi še v kakšnem jeziku)
+    + `.h` datoteko, ki definira vse potrebne funkcije in simbole ter vključi vse potrebne headerje
+    + `.cpp` datoteko, ki v prvi vrstici includa svojo `.h` datoteko in nato implementira algoritem,
+      začenši z vrstico 3.
+    + `_test.cpp` datoteko, ki vsebuje teste, ki preverjajo pravilnost algoritma.
+ * dokaz testiranja na terenu (link ali drugačen opis naloge)
+ * morebitne dependancije (npr. potrebuje `dijkstra.h`)
+ * morebitne dodatne opombe
 
 Dodajanje
 ---------
 Vsak nov algoritem mora imeti vse ustrezne podatke zgoraj. Datoteki s testi in
-implementacijo dajte v pravo mapo `implementacija/nekaj/algoritem.h` Vsak
-algoritem je implementiran kot ena ali več funkcij ali kot razred. Ko ste dodali
-teste (lahko tudi iz testnih datotek), je vse kar je treba narediti, da poženete
-skripto `full_test.sh`, ki avtomatsko prevede, testira in preveri stil vaše
-kode. Ko je ta skripta brez napak in je algoritem vključen v glavni dokument,
-lahko commitate.
+implementacijo dajte v pravo mapo `implementacija/nekaj/algoritem(.h|.cpp|_test.cpp)` Vsak algoritem
+je implementiran kot ena ali več funkcij ali kot razred. Ko ste dodali teste (lahko tudi iz testnih
+datotek), je vse kar je treba narediti, da poženete skripto `full_test.sh`, ki avtomatsko prevede,
+testira in preveri stil vaše kode. Ko je ta skripta brez napak in je algoritem vključen v glavni
+dokument, lahko commitate.
 
 Primer uporabe:
 
