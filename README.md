@@ -6,8 +6,8 @@ tekmovanjih. Implementacije smo nabirali skozi leta, zdaj pa smo se jih odločil
 zbrati na enem mestu. Algoritmi so implemetirani vsak v svoji .h datoteki in
 vključeni v glavni dokument.
 
-Algorithms
-----------
+Algoritmi
+---------
 Vsak algoritem vsebuje naslednje podatke:
 
  * vhodni parametri
