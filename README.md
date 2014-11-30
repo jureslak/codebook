@@ -1,13 +1,13 @@
 Codebook
 ========
 
-To je zbirka implementacij algoritmov, ki se pogosto popjavljajo na programerkih
+To je zbirka implementacij algoritmov, ki se pogosto pojavljajo na programerskih
 tekmovanjih. Implementacije smo nabirali skozi leta, zdaj pa smo se jih odločili
 zbrati na enem mestu. Algoritmi so implemetirani vsak v svoji datoteki in
 vključeni v glavni dokument.
 
-Algorithms
-----------
+Algoritmi
+---------
 Vsak algoritem vsebuje naslednje podatke:
 
  * vhodni parametri
