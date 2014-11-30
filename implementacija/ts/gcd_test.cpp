@@ -13,7 +13,7 @@ TEST(GcdTest, Divisor) {
     EXPECT_EQ(1, gcd(-7, 1));
 }
 
-TEST(GcdTest, General) {
+TEST(GcdTest, Positive) {
     EXPECT_EQ(3,  gcd(24, 15));
     EXPECT_EQ(12, gcd(144, 60));
     EXPECT_EQ(1,  gcd(81, 64));
