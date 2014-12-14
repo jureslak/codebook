@@ -48,7 +48,7 @@ fi
 echo -e "${BW}Checking code style ...${NC}"
 cd ..
 ERRORCODE=0
-for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(cpp\|cc\|c\)')
+for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(cpp\|cc\|c\|h\)')
 do
     python2 "test/cpplint.py" "--filter=-legal,-build/include,-runtime/reference"  "$filename"
     ERRORCODE=$(($ERRORCODE+$?))
