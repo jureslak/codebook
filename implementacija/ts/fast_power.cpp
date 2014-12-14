@@ -1,4 +1,4 @@
-#include "implementacija/ts/fast_power.h"
+#include "fast_power.h"
 
 int fast_power(int g, int n) {
     int r = 1;

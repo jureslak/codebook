@@ -1,4 +1,4 @@
-#include "implementacija/ts/stevilski_sestavi.h"
+#include "stevilski_sestavi.h"
 
 char STEVILSKI_SESTAVI_ZNAKI[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

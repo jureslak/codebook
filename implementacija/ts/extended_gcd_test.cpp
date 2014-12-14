@@ -1,4 +1,5 @@
 #include "extended_gcd.h"
+
 #include "gtest/gtest.h"
 
 TEST(ExtGcdTest, AllSmallNumbers) {

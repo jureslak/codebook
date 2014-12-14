@@ -1,4 +1,5 @@
 #include "gcd.h"
+
 #include "gtest/gtest.h"
 
 TEST(GcdTest, Zero) {

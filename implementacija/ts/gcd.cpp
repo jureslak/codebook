@@ -1,4 +1,4 @@
-#include "implementacija/ts/gcd.h"
+#include "gcd.h"
 
 int gcd(int a, int b) {
     int t;

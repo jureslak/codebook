@@ -1,4 +1,4 @@
-#include "implementacija/ts/extended_gcd.h"
+#include "extended_gcd.h"
 
 int ext_gcd(int a, int b, int& retx, int& rety) {
     int x = 0, px = 1, y = 1, py = 0, r, q;

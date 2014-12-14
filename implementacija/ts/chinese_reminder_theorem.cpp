@@ -1,4 +1,4 @@
-#include "implementacija/ts/chinese_reminder_theorem.h"
+#include "chinese_reminder_theorem.h"
 
 int mul_inverse(int a, int m) {
     int x, y;
