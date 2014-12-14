@@ -1,0 +1,6 @@
+#ifndef IMPLEMENTACIJA_TS_FAST_POWER_H_
+#define IMPLEMENTACIJA_TS_FAST_POWER_H_
+
+int fast_power(int g, int n);
+
+#endif  // IMPLEMENTACIJA_TS_FAST_POWER_H_
