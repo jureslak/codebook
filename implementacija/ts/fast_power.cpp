@@ -3,7 +3,7 @@
 int fast_power(int g, int n) {
     int r = 1;
     while (n > 0) {
-        if ((n & 1) == 1) {
+        if (n & 1) {
             r *= g;
         }
         g *= g;
