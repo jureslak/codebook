@@ -1,0 +1,6 @@
+#ifndef IMPLEMENTACIJA_TS_EULER_PHI_H_
+#define IMPLEMENTACIJA_TS_EULER_PHI_H_
+
+int euler_phi(int n);
+
+#endif  // IMPLEMENTACIJA_TS_EULER_PHI_H_

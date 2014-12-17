@@ -6,7 +6,7 @@
 \usepackage{graphicx}
 \usepackage[usenames]{color}
 \usepackage[reqno]{amsmath}
-\usepackage{amssymb,amsthm}
+\usepackage{amssymb,amsthm,mathabx}
 \usepackage{enumerate}
 \usepackage{array}
 \usepackage[colorlinks=true,
@@ -135,8 +135,8 @@
 \subsection{Številski sestavi}
 \label{sec:sestavi}
 \begin{description*}
-  \item[Vhod:] Število $n \in \N_0$ ali $\frac{p}{q} \in Q$ ter $b \in [2, \inf)
-    \cap \N.$
+  \item[Vhod:] Število $n \in \N_0$ ali $\frac{p}{q} \in Q$ ter $b \in [2,
+      \infty) \cap \N.$
   \item[Izhod:] Število $n$ ali $\frac{p}{q}$ predstavljeno v izbranem sestavu
     z izbranimi števkami in označeno periodo.
   \item[Časovna zahtevnost:] $O(\log(n))$ ali $O(q\log(q))$.
@@ -147,6 +147,20 @@
     \verb|STEVILSKI_SESTAVI_ZNAKI|.
 \end{description*}
 \cppsource{implementacija/ts/stevilski_sestavi.cpp}
+
+\section{Eulerjeva funkcija $\phi$}
+\label{sec:phi}
+\begin{description*}
+  \item[Vhod:] Število $n \in \N$.
+  \item[Izhod:] Število $\phi(n)$, to je število števil manjših ali enakih $n$ in tujih $n$.
+    Direktna formula:
+    \[ \phi(n) = n\cdot \prod_{p \divides n}(1-\frac{1}{p}) \]
+  \item[Časovna zahtevnost:] $O(\sqrt{n})$.
+  \item[Prostorska zahtevnost:] $O(1)$.
+  \item[Testiranje na terenu:]
+    \url{https://projecteuler.net/problem=69}
+\end{description*}
+\cppsource{implementacija/ts/euler_phi.cpp}
 
 \end{document}
 % vim: spell spelllang=sl
