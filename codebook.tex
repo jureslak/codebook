@@ -53,6 +53,7 @@
 \newmintedfile[pysource]{python}{linenos=true, mathescape, xleftmargin=0.7cm,
                                  fontsize=\scriptsize,baselinestretch=0.9}
 
+\newcommand{\cpp}[1]{\cppsource{implementacija/#1}}
 \newcommand{\ull}{\texttt{unsigned long long}}
 
 \begin{document}
@@ -74,6 +75,24 @@
 
 \newpage
 
+\section{Grafi}
+\label{sec:grafi}
+
+\subsection{Topološko sortiranje}
+\begin{description*}
+  \item[Vhod:] Število vozlišč $n$ in število povezav $m$ ter seznam povezav $E$
+    oblike $u \to v$ dolžine $m$. Graf $G$ je tako sestavljen iz vozlišč z oznakami
+    0 do $n-1$ in povezavami iz $E$. $G$ ne sme imeti zank, če pa jih ima, se
+    jih lahko brez škode odstrani.
+  \item[Izhod:] Topološka ureditev grafa $G$, to je seznam vozlišč v takem
+    vrstem redu, da nobena povezava ne kaže nazaj. Če je vrnjeni seznam krajši
+    od $n$, potem ima $G$ cikle.
+  \item[Časovna zahtevnost:] $O(V + E)$
+  \item[Prostorska zahtevnost:] $O(V)$
+\end{description*}
+\cpp{graph/topological_sort.cpp}
+
+
 \section{Teorija števil}
 \label{sec:ts}
 
@@ -85,10 +104,10 @@
   \item[Izhod:] Največji skupni delitelj $a$ in $b$. Za pozitivna števila je
     pozitiven, če je eno število 0, je rezultat drugo število, pri negativnih je
     predznak odvisen od števila iteracij.
-  \item[Časovna zahtevnost:] $O(\log(\max\{a, b\}))$
+  \item[Časovna zahtevnost:] $O(\log(a) + \log(b))$
   \item[Prostorska zahtevnost:] $O(1)$
 \end{description*}
-\cppsource{implementacija/ts/gcd.cpp}
+\cpp{ts/gcd.cpp}
 
 \subsection{Razširjen Evklidov algoritem}
 \label{sec:ts:extevk}
@@ -97,11 +116,11 @@
   \item[Izhod:] Števila $x, y, d$, pri čemer $d = \gcd(a, b)$, ki rešijo
     Diofantsko enačbo $ax + by = d$. V posebnem primeru, da je $b$ tuj $a$, je
     $x$ inverz števila $a$ v multiplikativni grupi $Z_b^\ast$.
-  \item[Časovna zahtevnost:] $O(\log(\max\{a, b\}))$
+  \item[Časovna zahtevnost:] $O(\log(a) + \log(b))$
   \item[Prostorska zahtevnost:] $O(1)$
   \item[Testiranje na terenu:] UVa 756
 \end{description*}
-\cppsource{implementacija/ts/extended_gcd.cpp}
+\cpp{ts/extended_gcd.cpp}
 
 \subsection{Kitajski izrek o ostankih}
 \label{sec:ts:mod}
@@ -119,7 +138,7 @@
   \item[Testiranje na terenu:] UVa 756
   \item[Opomba:] Pogosto potrebujemo \ull{} namesto \texttt{int}.
 \end{description*}
-\cppsource{implementacija/ts/chinese_reminder_theorem.cpp}
+\cpp{ts/chinese_reminder_theorem.cpp}
 
 \subsection{Hitro potenciranje}
 \label{sec:fastpow}
@@ -130,7 +149,7 @@
   \item[Prostorska zahtevnost:] $O(1)$
   \item[Testiranje na terenu:] \url{http://putka.upm.si/tasks/2010/2010_3kolo/nicle}
 \end{description*}
-\cppsource{implementacija/ts/fast_power.cpp}
+\cpp{ts/fast_power.cpp}
 
 \subsection{Številski sestavi}
 \label{sec:sestavi}
@@ -146,7 +165,7 @@
   \item[Opomba:] Zgornja meja za bazo $b$ je dolžina niza
     \verb|STEVILSKI_SESTAVI_ZNAKI|.
 \end{description*}
-\cppsource{implementacija/ts/stevilski_sestavi.cpp}
+\cpp{ts/stevilski_sestavi.cpp}
 
 \section{Eulerjeva funkcija $\phi$}
 \label{sec:phi}
@@ -160,7 +179,7 @@
   \item[Testiranje na terenu:]
     \url{https://projecteuler.net/problem=69}
 \end{description*}
-\cppsource{implementacija/ts/euler_phi.cpp}
+\cpp{ts/euler_phi.cpp}
 
 \end{document}
 % vim: spell spelllang=sl
