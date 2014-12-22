@@ -38,8 +38,10 @@ if [ $? -ne 0 ]; then
     exit 4
 fi
 
+filter=${1:-"*"} # default test filter
+
 echo -e "${BW}Running tests ...${NC}"
-./run_tests
+./run_tests --gtest_filter="$filter"
 if [ $? -ne 0 ]; then
     echo -e "${BR}Error: there are failed tests!${NC}"
     exit 5
@@ -50,7 +52,7 @@ cd ..
 ERRORCODE=0
 for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(cpp\|cc\|c\|h\)')
 do
-    python2 "test/cpplint.py" "--filter=-legal,-build/include,-runtime/reference"  "$filename"
+    python2 "test/cpplint.py" "--filter=-legal,-build/include,-runtime/reference" "--linelength=100" "$filename"
     ERRORCODE=$(($ERRORCODE+$?))
 done
 if [ $ERRORCODE -ne 0 ]; then
