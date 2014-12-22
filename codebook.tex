@@ -81,18 +81,32 @@
 \subsection{Topološko sortiranje}
 \begin{description*}
   \item[Vhod:] Število vozlišč $n$ in število povezav $m$ ter seznam povezav $E$
-    oblike $u \to v$ dolžine $m$. Graf $G$ je tako sestavljen iz vozlišč z oznakami
+    oblike $u \to v$ dolžine $m$. Usmerjen graf $G$ je tako sestavljen iz vozlišč z oznakami
     0 do $n-1$ in povezavami iz $E$. $G$ ne sme imeti zank, če pa jih ima, se
     jih lahko brez škode odstrani.
-  \item[Izhod:] Topološka ureditev grafa $G$, to je seznam vozlišč v takem
+  \item[Izhod:] Topološka ureditev usmerjenega grafa $G$, to je seznam vozlišč v takem
     vrstem redu, da nobena povezava ne kaže nazaj. Če je vrnjeni seznam krajši
     od $n$, potem ima $G$ cikle.
   \item[Časovna zahtevnost:] $O(V + E)$
   \item[Prostorska zahtevnost:] $O(V)$
   \item[Testiranje na terenu:] UVa 10305
 \end{description*}
-\cpp{graph/topological_sort.cpp}
+\cpp{grafi/topological_sort.cpp}
 
+\subsection{Mostovi in atriculation points grafa}
+\label{sec:bridge}
+\begin{description*}
+  \item[Vhod:] Število vozlišč $n$ in število povezav $m$ ter seznam povezav $E$
+    oblike $u \to v$ dolžine $m$. Neusmerjen graf $G$ je tako sestavljen iz vozlišč z oznakami
+    0 do $n-1$ in povezavami iz $E$.
+  \item[Izhod:] Seznam articulation pointov: točk, pri katerih, če jih
+    odstranimo, graf razpade na dve komponenti in seznam mostov grafa $G$: povezav, pri
+    katerih, če jih odstranimo, graf razpade na dve komponenti.
+  \item[Časovna zahtevnost:] $O(V + E)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:] UVa 315
+\end{description*}
+\cpp{grafi/articulation_points_and_bridges.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
