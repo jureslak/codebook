@@ -66,4 +66,9 @@ Primer uporabe:
     Done! All looks great!
     $
 
+Pri uporabi `full_test.sh` je možno kot prvi argument podati tudi filter za teste, da ne požene
+vseh. Primer:
+
+    $./full_test.sh Gcd*
+
 Jure Slak
