@@ -93,16 +93,16 @@
 \end{description*}
 \cpp{grafi/topological_sort.cpp}
 
-\subsection{Mostovi in atriculation points grafa}
+\subsection{Mostovi in prerezna vozlišča grafa}
 \label{sec:bridge}
 \begin{description*}
   \item[Vhod:] Število vozlišč $n$ in število povezav $m$ ter seznam povezav $E$
     oblike $u \to v$ dolžine $m$. Neusmerjen graf $G$ je tako sestavljen iz vozlišč z oznakami
     0 do $n-1$ in povezavami iz $E$.
-  \item[Izhod:] Seznam articulation pointov: točk, pri katerih, če jih
+  \item[Izhod:] Seznam prereznih vozlišč: točk, pri katerih, če jih
     odstranimo, graf razpade na dve komponenti in seznam mostov grafa $G$: povezav, pri
     katerih, če jih odstranimo, graf razpade na dve komponenti.
-  \item[Časovna zahtevnost:] $O(V + E)$
+  \item[Časovna zahtevnost:] $O(V)$
   \item[Prostorska zahtevnost:] $O(V + E)$
   \item[Testiranje na terenu:] UVa 315
 \end{description*}

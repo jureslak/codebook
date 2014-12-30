@@ -45,15 +45,12 @@ void articulation_points_and_bridges(int n, int m, const int E[][2],
     parent.assign(n, -1);
 
     vector<bool> articulation_points_map(n, false);
-    for (int i = 0; i < n; ++i) {
-        if (dfs_num[i] == -1) {
+    for (int i = 0; i < n; ++i)
+        if (dfs_num[i] == -1)
             articulation_points_and_bridges_internal(i, G, articulation_points_map, bridges);
-        }
-    }
-    for (int i = 0; i < n; ++i) {
-        if (articulation_points_map[i]) {
+
+    for (int i = 0; i < n; ++i)
+        if (articulation_points_map[i])
             articulation_points.push_back(i);  // actually return only articulation points
-        }
-    }
 }
 
