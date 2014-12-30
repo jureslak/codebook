@@ -102,11 +102,25 @@
   \item[Izhod:] Seznam prereznih vozlišč: točk, pri katerih, če jih
     odstranimo, graf razpade na dve komponenti in seznam mostov grafa $G$: povezav, pri
     katerih, če jih odstranimo, graf razpade na dve komponenti.
-  \item[Časovna zahtevnost:] $O(V)$
+  \item[Časovna zahtevnost:] $O(V + E)$
   \item[Prostorska zahtevnost:] $O(V + E)$
   \item[Testiranje na terenu:] UVa 315
 \end{description*}
 \cpp{grafi/articulation_points_and_bridges.cpp}
+
+\subsection{Močno povezane komponente}
+\label{sec:scc}
+\begin{description*}
+  \item[Vhod:] Seznam sosednosti s težami povezav.
+  \item[Izhod:] Seznam povezanih komponent grafa v obratni topološki ureditvi in
+    kvocientni graf, to je DAG, ki ga dobimo iz grafa, če njegove komponente
+    stisnemo v točke. Morebitnih več povezav med dvema komponentama seštejemo.
+  \item[Časovna zahtevnost:] $O(V + E)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2012/2012_3kolo/zakladi}
+\end{description*}
+\cpp{grafi/strongly_connected_components.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
@@ -127,7 +141,7 @@
 \subsection{Razširjen Evklidov algoritem}
 \label{sec:ts:extevk}
 \begin{description*}
-  \item[Vhod:] $a, b \in \Z,$. Števili $retx$, $rety$ sta parametra samo za vračanje vrednosti.
+  \item[Vhod:] $a, b \in \Z$. Števili $retx$, $rety$ sta parametra samo za vračanje vrednosti.
   \item[Izhod:] Števila $x, y, d$, pri čemer $d = \gcd(a, b)$, ki rešijo
     Diofantsko enačbo $ax + by = d$. V posebnem primeru, da je $b$ tuj $a$, je
     $x$ inverz števila $a$ v multiplikativni grupi $Z_b^\ast$.
@@ -182,7 +196,7 @@
 \end{description*}
 \cpp{ts/stevilski_sestavi.cpp}
 
-\section{Eulerjeva funkcija $\phi$}
+\subsection{Eulerjeva funkcija $\phi$}
 \label{sec:phi}
 \begin{description*}
   \item[Vhod:] Število $n \in \N$.
