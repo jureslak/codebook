@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "${BW}Compiling tests ...${NC}"
-make all -j8  # your number of processors
+make all -j8 > /dev/null # your number of processors
 if [ $? -ne 0 ]; then
     echo -e "${BR}Error: compilation failed!.${NC}"
     exit 4
@@ -52,12 +52,21 @@ cd ..
 ERRORCODE=0
 for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(cpp\|cc\|c\|h\)')
 do
-    python2 "test/cpplint.py" "--filter=-legal,-build/include,-runtime/reference" "--linelength=100" "$filename"
-    ERRORCODE=$(($ERRORCODE+$?))
+    dir=`mktemp -d`
+    python2 "test/cpplint.py" \
+      "--filter=-legal,-build/include,-runtime/reference,-runtime/threadsafe_fn" \
+      "--linelength=100" \
+      "$filename" 2> "$dir/out"
+    exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        cat "$dir/out"
+    fi
+    rm -r $dir
+    ERRORCODE=$(($ERRORCODE+$exit_code))
 done
 if [ $ERRORCODE -ne 0 ]; then
     echo -e "${BR}Error: there were sytle mistakes!${NC}"
-    echo "(If you feel errors are unjust, edit this file and add exceptions.)"
+    echo "(If you feel errors are unjust, edit this file and add exceptions (ln. 56).)"
     exit 6
 fi
 
