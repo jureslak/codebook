@@ -234,6 +234,7 @@ pomeni, da se premici prekrivata, daljici sekata v krajišču ali se pokrivata,
 oz.\ da je točka na robu.
 
 \subsection{Osnove}
+\label{sec:basic}
 Funkcije:
 \begin{itemize*}
   \item skalarni in vektorski produkt
@@ -253,9 +254,20 @@ Funkcije:
   \item[Testiranje na terenu:] Bolj tako, ima pa obsežne unit teste\dots
 \end{description*}
 \label{sec:geom-osnove}
-
 \cpp{geom/basics.cpp}
 
+\subsection{Konveksna ovojnica}
+\label{sec:convex-hull}
+\begin{description*}
+  \item[Vhod:] Seznam $n$ točk.
+  \item[Izhod:] Najkrajši seznam $h$ točk, ki napenjajo konveksno ovojnico,
+    urejen naraščajoče po kotu glede na spodnjo levo točko.
+  \item[Časovna zahtevnost:] $O(n\log n)$, zaradi sortiranja
+  \item[Prostorska zahtevnost:] $O(n)$.
+  \item[Potrebuje:] Vektorski produkt, str.~\pageref{sec:basic}.
+  \item[Testiranje na terenu:] UVa 681
+\end{description*}
+\cpp{geom/convex_hull.cpp}
 
 \end{document}
 % vim: spell spelllang=sl
