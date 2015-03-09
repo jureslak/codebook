@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# move this file to .git/hooks/
+# and rename it to pre-commit
+./full_test.sh
