@@ -3782,9 +3782,9 @@ def CheckBraces(filename, clean_lines, linenum, error):
           'If an else has a brace on one side, it should have it on both')
 
   # Likewise, an else should never have the else clause on the same line
-  if Search(r'\belse [^\s{]', line) and not Search(r'\belse if\b', line):
-    error(filename, linenum, 'whitespace/newline', 4,
-          'Else clause should never be on same line as else (use 2 lines)')
+#    if Search(r'\belse [^\s{]', line) and not Search(r'\belse if\b', line):
+#      error(filename, linenum, 'whitespace/newline', 4,
+#            'Else clause should never be on same line as else (use 2 lines)')
 
   # In the same way, a do/while should never be on one line
   if Match(r'\s*do [^\s{]', line):

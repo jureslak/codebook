@@ -32,6 +32,15 @@
 \def\C{\mathbb{C}}
 \def\Q{\mathbb{Q}}
 
+\newenvironment{itemize*}%
+{
+\vspace{-6pt}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{2pt}
+}
+{\end{itemize}}
+
 \newenvironment{description*}%
 {
 \begin{description}
@@ -209,6 +218,44 @@
     \url{https://projecteuler.net/problem=69}
 \end{description*}
 \cpp{ts/euler_phi.cpp}
+
+\section{Geometrija}
+\label{sec:geom}
+Zaenkrat obravnavamo samo ravninsko geometrijo.
+Točke predstavimo kot kompleksna števila. Daljice predstavimo z začetno in
+končno točko. Premice s koeficienti v enačbi $ax + by = c$. Premico lahko
+konstruiramo iz dveh točk in po želji hranimo točko in smerni vektor.
+Pravokotnike predstavimo z spodnjim levim in zgornjim desnim ogliščem.
+Večkotnike predstavimo s seznamom točk, kot si sledijo, prve točke ne
+ponavljamo. Tip \texttt{ITYPE} predstavlja različne vrste presečišč ali
+vsebovanosti: \texttt{OK} pomeni, da se lepo seka oz.\ je točka v notranjosti.
+\texttt{NO} pomeni, da se ne seka oz.\ da točna ni vsebovana, \texttt{EQ} pa
+pomeni, da se premici prekrivata, daljici sekata v krajišču ali se pokrivata,
+oz.\ da je točka na robu.
+
+\subsection{Osnove}
+Funkcije:
+\begin{itemize*}
+  \item skalarni in vektorski produkt
+  \item pravokotni vektor in polarni kot
+  \item ploščina trikotnika in enostavnega mnogokotnika
+  \item razred za premice
+  \item razdalja do premice, daljice, po sferi
+  \item vsebovanost v trikotniku, pravokotniku, enostavnem mnogokotniku
+  \item presek dveh premic, premice in daljice in dveh daljic
+  \item konstrukcije krogov iz treh točk, iz dveh točk in radija
+\end{itemize*}
+\begin{description*}
+  \item[Vhod:] Pri argumentih funkcij.
+  \item[Izhod:] Pri argumentih funkcij.
+  \item[Časovna zahtevnost:] $O(\text{št.\ točk})$.
+  \item[Prostorska zahtevnost:] $O(\text{št.\ točk})$.
+  \item[Testiranje na terenu:] Bolj tako, ima pa obsežne unit teste\dots
+\end{description*}
+\label{sec:geom-osnove}
+
+\cpp{geom/basics.cpp}
+
 
 \end{document}
 % vim: spell spelllang=sl
