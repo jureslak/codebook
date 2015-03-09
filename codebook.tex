@@ -9,10 +9,9 @@
 \usepackage{amssymb,amsthm,mathabx}
 \usepackage{enumerate}
 \usepackage{array}
-\usepackage[colorlinks=true,
+\usepackage[bookmarks, bookmarksopen, bookmarksdepth=3, colorlinks=true,
   linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black,
-  menucolor=black, runcolor=black, urlcolor=black, pdfencoding=unicode,
-  bookmarks=true, bookmarksopenlevel=2
+  menucolor=black, runcolor=black, urlcolor=black, pdfencoding=unicode
 ]{hyperref}
 \usepackage[
   paper=a4paper,
@@ -196,8 +195,8 @@
       \infty) \cap \N.$
   \item[Izhod:] Število $n$ ali $\frac{p}{q}$ predstavljeno v izbranem sestavu
     z izbranimi števkami in označeno periodo.
-  \item[Časovna zahtevnost:] $O(\log(n))$ ali $O(q\log(q))$.
-  \item[Prostorska zahtevnost:] $O(n)$ ali $O(q)$.
+  \item[Časovna zahtevnost:] $O(\log(n))$ ali $O(q\log(q))$
+  \item[Prostorska zahtevnost:] $O(n)$ ali $O(q)$
   \item[Testiranje na terenu:]
     \url{http://putka.upm.si/tasks/2010/2010_finale/ulomki}
   \item[Opomba:] Zgornja meja za bazo $b$ je dolžina niza
@@ -212,8 +211,8 @@
   \item[Izhod:] Število $\phi(n)$, to je število števil manjših ali enakih $n$ in tujih $n$.
     Direktna formula:
     \[ \phi(n) = n\cdot \prod_{p \divides n}(1-\frac{1}{p}) \]
-  \item[Časovna zahtevnost:] $O(\sqrt{n})$.
-  \item[Prostorska zahtevnost:] $O(1)$.
+  \item[Časovna zahtevnost:] $O(\sqrt{n})$
+  \item[Prostorska zahtevnost:] $O(1)$
   \item[Testiranje na terenu:]
     \url{https://projecteuler.net/problem=69}
 \end{description*}
@@ -249,13 +248,13 @@ Funkcije:
 \begin{description*}
   \item[Vhod:] Pri argumentih funkcij.
   \item[Izhod:] Pri argumentih funkcij.
-  \item[Časovna zahtevnost:] $O(\text{št.\ točk})$.
-  \item[Prostorska zahtevnost:] $O(\text{št.\ točk})$.
+  \item[Časovna zahtevnost:] $O(\text{št.\ točk})$
+  \item[Prostorska zahtevnost:] $O(\text{št.\ točk})$
   \item[Testiranje na terenu:] Bolj tako, ima pa obsežne unit teste\dots
 \end{description*}
 \label{sec:geom-osnove}
 \cpp{geom/basics.cpp}
-
+.
 \subsection{Konveksna ovojnica}
 \label{sec:convex-hull}
 \begin{description*}
@@ -263,11 +262,22 @@ Funkcije:
   \item[Izhod:] Najkrajši seznam $h$ točk, ki napenjajo konveksno ovojnico,
     urejen naraščajoče po kotu glede na spodnjo levo točko.
   \item[Časovna zahtevnost:] $O(n\log n)$, zaradi sortiranja
-  \item[Prostorska zahtevnost:] $O(n)$.
+  \item[Prostorska zahtevnost:] $O(n)$
   \item[Potrebuje:] Vektorski produkt, str.~\pageref{sec:basic}.
   \item[Testiranje na terenu:] UVa 681
 \end{description*}
 \cpp{geom/convex_hull.cpp}
+
+\subsection{Ploščina unije pravokotnikov}
+\begin{description*}
+  \item[Vhod:] Seznam $n$ pravokotnikov $P_i$ danih s spodnjo levo in zgornjo desno
+    točko.
+  \item[Izhod:] Ploščina unije danih pravokotnikov.
+  \item[Časovna zahtevnost:] $O(n\log n)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] \url{http://putka.upm.si/competitions/upm2013-2/kolaz}
+\end{description*}
+\cpp{geom/rectangle_union_area.cpp}
 
 \end{document}
 % vim: spell spelllang=sl
