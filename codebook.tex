@@ -138,6 +138,24 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/strongly_connected_components.cpp}
 
+\subsection{Največje prirejanje in najmanjše pokritje}
+\label{sec:mbm}
+v angleščini \emph{Maximum cardinality bipartite matching} (če bi dodali še
+kakšno povezavo bi se dve stikali) in \emph{minimum vertex cover} (če bi vzeli
+še kakšno točko stran, bi bila neka povezava brez pobarvane točke na obeh
+koncih).
+\begin{description*}
+  \item[Vhod:] Dvodelen neutežen graf, dan s seznamom sosedov. Prvih \texttt{left} vozlišč je na
+    levi strani.
+  \item[Izhod:] Število povezav v $MCBM$ = število točk v $MVC$, prvi $MVC$ vrne tudi neko minimalno
+    pokritje. Velja tudi $MIS = V - MCBM$, $MIS$ pomeni \emph{maximum
+    independent set}.
+  \item[Časovna zahtevnost:] $O(VE)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:] UVa 11138
+\end{description*}
+\cpp{grafi/bipartite_matching.cpp}
+
 \section{Teorija števil}
 \label{sec:ts}
 
