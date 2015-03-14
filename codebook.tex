@@ -83,6 +83,14 @@
 
 \newpage
 
+\setcounter{section}{-1}
+\section{Uvod}
+Napotki zame:
+\begin{itemize*}
+  \item podrobno in pozorno preberi navodila
+  \item pazi na \texttt{double} in \texttt{ull}, oceni velikost rezultata
+\end{itemize*}
+
 \section{Grafi}
 \label{sec:grafi}
 
@@ -93,7 +101,7 @@
     0 do $n-1$ in povezavami iz $E$. $G$ ne sme imeti zank, če pa jih ima, se
     jih lahko brez škode odstrani.
   \item[Izhod:] Topološka ureditev usmerjenega grafa $G$, to je seznam vozlišč v takem
-    vrstem redu, da nobena povezava ne kaže nazaj. Če je vrnjeni seznam krajši
+    vrstnem redu, da nobena povezava ne kaže nazaj. Če je vrnjeni seznam krajši
     od $n$, potem ima $G$ cikle.
   \item[Časovna zahtevnost:] $O(V + E)$
   \item[Prostorska zahtevnost:] $O(V)$
@@ -217,6 +225,19 @@
     \url{https://projecteuler.net/problem=69}
 \end{description*}
 \cpp{ts/euler_phi.cpp}
+
+\subsection{Eratostenovo rešeto}
+\label{sec:primes}
+\begin{description*}
+  \item[Vhod:] Število $n \in \N$.
+  \item[Izhod:] Seznam praštevil manjših od $n$ in seznam, kjer je za vsako
+    število manjše od $n$ notri njegov najmanjši praštevilski delitelj. To se
+    lahko uporablja za faktorizacijo števil in testiranje praštevilskosti.
+  \item[Časovna zahtevnost:] $O(n\log(n))$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] UVa 10394
+\end{description*}
+\cpp{ts/eratosthenes_sieve.cpp}
 
 \section{Geometrija}
 \label{sec:geom}
