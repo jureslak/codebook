@@ -138,6 +138,22 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/strongly_connected_components.cpp}
 
+\subsection{Najkrajša pot v grafu}
+
+\subsubsection{Dijkstra}
+\label{sec:dijkstra}
+\begin{description*}
+  \item[Vhod:] Seznam sosednosti s težami povezav in dve točki grafa. Pozevave
+    morajo biti pozitivne.
+  \item[Izhod:] Najkrajša pot od prve do druge točke.
+  \item[Časovna zahtevnost:] $O(E\log(E))$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2013/2013_1kolo/wolowitz}
+\end{description*}
+\cpp{grafi/dijkstra.cpp}
+
+
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
 v angleščini \emph{Maximum cardinality bipartite matching} (če bi dodali še
