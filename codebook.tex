@@ -156,7 +156,7 @@ Napotki zame:
 
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
-v angleščini \emph{Maximum cardinality bipartite matching} (če bi dodali še
+v angleščini: \emph{maximum cardinality bipartite matching} (če bi dodali še
 kakšno povezavo bi se dve stikali) in \emph{minimum vertex cover} (če bi vzeli
 še kakšno točko stran, bi bila neka povezava brez pobarvane točke na obeh
 koncih).
@@ -333,6 +333,18 @@ Funkcije:
   \item[Testiranje na terenu:] \url{http://putka.upm.si/competitions/upm2013-2/kolaz}
 \end{description*}
 \cpp{geom/rectangle_union_area.cpp}
+
+\subsection{Najbližji par točk v ravnini}
+\begin{description*}
+  \item[Vhod:] Seznam $n \geq 2$ točk v ravnini.
+  \item[Izhod:] Kvadrat razdalje med najbližjima točkama. Z lahkoto se
+    prilagodi, da vrne tudi točki.
+  \item[Časovna zahtevnost:] $O(n\log n)$, nisem sure\dots
+  :\item[Prostorska zahtevnost:] $O(n \log n)$
+  \item[Testiranje na terenu:] UVa 10245
+\end{description*}
+\cpp{geom/closest_pair_of_points.cpp}
+
 
 \end{document}
 % vim: spell spelllang=sl
