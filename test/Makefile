@@ -79,4 +79,4 @@ tests : $(SRC) $(HDR) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(SRC)
 
 run_tests : $(OBJ) gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ && rm -f $(OBJ)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ # && rm -f $(OBJ)

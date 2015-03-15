@@ -36,10 +36,6 @@ Primer uporabe:
 
     $ ./full_test.sh
     Compiling tests ...
-    g++ -g -Wall -Wextra -pthread -std=c++11 -isystem ./googletest/include  -c -o
-    ../implementacija/ts/gcd_test.o ../implementacija/ts/gcd_test.cpp
-    g++ -isystem ./googletest/include -g -Wall -Wextra -pthread -std=c++11 -lpthread
-    ../implementacija/ts/gcd_test.o gtest_main.a -o run_tests && rm -f ../implementacija/ts/gcd_test.o
     Running tests ...
     Running main() from gtest_main.cc
     [==========] Running 4 tests from 1 test case.
@@ -59,16 +55,21 @@ Primer uporabe:
     [==========] 4 tests from 1 test case ran. (0 ms total)
     [  PASSED  ] 4 tests.
     Checking code style ...
-    Done processing ./implementacija/ts/gcd_test.cpp
-    Total errors found: 0
-    Done processing ./implementacija/ts/gcd.h
-    Total errors found: 0
     Done! All looks great!
     $
 
-Pri uporabi `full_test.sh` je možno kot prvi argument podati tudi filter za teste, da ne požene
-vseh. Primer:
+Pri uporabi `full_test.sh` je možno podati naslednje flage:
 
-    $./full_test.sh Gcd*
+ * `-f [arg]` ali `--filter [arg]`, ki filtrira teste po imenu, da se izpišejo samo želeni testi.
+
+    $./full_test.sh -f Gcd*
+
+ * `-n` ali `--nostylecheck`, ki požene teste brez preverjanja stila kode (kar traja dolgo). Ob
+   commitu se to še vedno preveri.
+
+    $./full_test.sh -n
+
+Možnosti sta seveda združljivi. Za hitrejše compilanje sem `.o` file pustil v mapicah. Če želite
+full recompilation jih lahko odstranite.
 
 Jure Slak
