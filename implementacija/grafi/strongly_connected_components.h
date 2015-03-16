@@ -13,7 +13,7 @@ using std::pair;
 using std::stack;
 using std::vector;
 
-void strongly_connected_components(const vector<vector<pair<int, int>>>& G,
+void strongly_connected_components(const vector<vector<pair<int, int>>>& graf,
         vector<vector<int>>& comps, vector<map<int, int>>& dag);
 
 #endif  // IMPLEMENTACIJA_GRAFI_STRONGLY_CONNECTED_COMPONENTS_H_

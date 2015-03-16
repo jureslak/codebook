@@ -1,12 +1,12 @@
 #include "topological_sort.h"
 
 vector<int> topological_sort(int n, int m, const int E[][2]) {
-    vector<vector<int>> G(n);
+    vector<vector<int>> graf(n);
     vector<int> ingoing(n, 0);
 
     for (int i = 0; i < m; ++i) {
         int a = E[i][0], b = E[i][1];
-        G[a].push_back(b);
+        graf[a].push_back(b);
         ingoing[b]++;
     }
 
@@ -22,7 +22,7 @@ vector<int> topological_sort(int n, int m, const int E[][2]) {
 
         res.push_back(t);
 
-        for (int v : G[t])
+        for (int v : graf[t])
             if (--ingoing[v] == 0)
                 q.push(v);
     }

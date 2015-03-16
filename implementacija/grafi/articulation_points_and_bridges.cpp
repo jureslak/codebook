@@ -6,17 +6,17 @@ vector<int> dfs_num;
 vector<int> parent;
 }
 
-void articulation_points_and_bridges_internal(int u, const vector<vector<int>>& G,
+void articulation_points_and_bridges_internal(int u, const vector<vector<int>>& graf,
         vector<bool>& articulation_points_map, vector<pair<int, int>>& bridges) {
     static int dfs_num_counter = 0;
     low[u] = dfs_num[u] = ++dfs_num_counter;
     int children = 0;
-    for (int v : G[u]) {
+    for (int v : graf[u]) {
         if (dfs_num[v] == -1) {  // unvisited
             parent[v] = u;
             children++;
 
-            articulation_points_and_bridges_internal(v, G, articulation_points_map, bridges);
+            articulation_points_and_bridges_internal(v, graf, articulation_points_map, bridges);
             low[u] = min(low[u], low[v]);  // update low[u]
 
             if (parent[u] == -1 && children > 1)  // special root case
@@ -33,11 +33,11 @@ void articulation_points_and_bridges_internal(int u, const vector<vector<int>>& 
 
 void articulation_points_and_bridges(int n, int m, const int E[][2],
         vector<int>& articulation_points, vector<pair<int, int>>& bridges) {
-    vector<vector<int>> G(n);
+    vector<vector<int>> graf(n);
     for (int i = 0; i < m; ++i) {
         int a = E[i][0], b = E[i][1];
-        G[a].push_back(b);
-        G[b].push_back(a);
+        graf[a].push_back(b);
+        graf[b].push_back(a);
     }
 
     low.assign(n, -1);
@@ -47,7 +47,7 @@ void articulation_points_and_bridges(int n, int m, const int E[][2],
     vector<bool> articulation_points_map(n, false);
     for (int i = 0; i < n; ++i)
         if (dfs_num[i] == -1)
-            articulation_points_and_bridges_internal(i, G, articulation_points_map, bridges);
+            articulation_points_and_bridges_internal(i, graf, articulation_points_map, bridges);
 
     for (int i = 0; i < n; ++i)
         if (articulation_points_map[i])
