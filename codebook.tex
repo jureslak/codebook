@@ -143,9 +143,10 @@ Napotki zame:
 \subsubsection{Dijkstra}
 \label{sec:dijkstra}
 \begin{description*}
-  \item[Vhod:] Seznam sosednosti s težami povezav in dve točki grafa. Pozevave
+  \item[Vhod:] Seznam sosednosti s težami povezav in dve točki grafa. Povezave
     morajo biti pozitivne.
-  \item[Izhod:] Najkrajša pot od prve do druge točke.
+  \item[Izhod:] Dolžina najkrajša poti od prve do druge točke. Z lahkoto vrne
+    tudi pot, glej kvadratično verzijo za implementacijo.
   \item[Časovna zahtevnost:] $O(E\log(E))$
   \item[Prostorska zahtevnost:] $O(V + E)$
   \item[Testiranje na terenu:]
@@ -153,6 +154,19 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/dijkstra.cpp}
 
+\subsubsection{Dijkstra (kvadratičen)}
+\label{sec:dijkstra-square}
+\begin{description*}
+  \item[Vhod:] Seznam sosednosti s težami povezav in dve točki grafa. Povezave
+    morajo biti pozitivne.
+  \item[Izhod:] Najkrajša pot med danima točkama, dana kot seznam vmesnih
+    vozlišč skupaj z obema krajiščema.
+  \item[Časovna zahtevnost:] $O(V^2)$, to je lahko bolje kot $O(E\log(E))$.
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2013/2013_1kolo/wolowitz}
+\end{description*}
+\cpp{grafi/dijkstra_square.cpp}
 
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
