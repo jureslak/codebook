@@ -19,7 +19,7 @@ int dijkstra(const vector<vector<pii>>& graf, int s, int v) {
 
         if (c == v) break;  // ce iscemo do vseh tock spremeni v --n == 0
 
-        for (auto p : graf[c])
+        for (const auto& p : graf[c])
             if (!visited[p.first])
                 q.push({d + p.second, p.first});
     }

@@ -168,6 +168,20 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/dijkstra_square.cpp}
 
+\subsubsection{Bellman-Ford}
+\label{sec:bellman-ford}
+\begin{description*}
+  \item[Vhod:] Seznam sosednosti s težami povezav in točka grafa. Povezave
+    ne smejo imeti negativnega cikla (duh).
+  \item[Izhod:] Vrne razdaljo od dane točke do vseh drugih. Ni nič ceneje če
+    iščemo samo do določene točke.
+  \item[Časovna zahtevnost:] $O(EV)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2013/2013_1kolo/wolowitz}
+\end{description*}
+\cpp{grafi/bellman_ford.cpp}
+
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
 v angleščini: \emph{maximum cardinality bipartite matching} (če bi dodali še
