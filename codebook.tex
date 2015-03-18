@@ -187,7 +187,7 @@ Napotki zame:
 \begin{description*}
   \item[Vhod:] Število vozlišč, število povezav in seznam povezav. Povezave
     ne smejo imeti negativnega cikla (duh).
-  \item[Izhod:] Vrne matriko razdalj med vsemi točkami, $dist[i][j]$ je razdalja
+  \item[Izhod:] Vrne matriko razdalj med vsemi točkami, $d[i][j]$ je razdalja
     od $i$-te do $j$-te točke. Če je katerikoli diagonalen element negativen,
     ima graf negativen cikel. Rekonstrukcija poti je možna s pomočjo dodatne
     tabele, kjer hranimo naslednika.
@@ -198,9 +198,28 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/floyd_warshall.cpp}
 
+\subsection{Minimalno vpeto drevo}
+\label{sec:mst}
+
+\subsubsection{Prim}
+\label{sec:mst-prim}
+\begin{description*}
+  \item[Vhod:] Neusmerjen povezan graf s poljubnimi cenami povezav.
+  \item[Izhod:] Vrne ceno najmanjšega vpetega drevesa. Z lahkoto to zamenjamo z
+    maksimalnim (ali katerokoli podobno operacijo) drevesom.
+  \item[Časovna zahtevnost:] $O(E\log(E))$, dober za goste grafe.
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:] UVa 11631
+\end{description*}
+\cpp{grafi/prim_minimal_spanning_tree.cpp}
+
+
+% \subsubsection{Kruskal}
+
+
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
-v angleščini: \emph{maximum cardinality bipartite matching} (če bi dodali še
+V angleščini: \emph{maximum cardinality bipartite matching} (če bi dodali še
 kakšno povezavo bi se dve stikali) in \emph{minimum vertex cover} (če bi vzeli
 še kakšno točko stran, bi bila neka povezava brez pobarvane točke na obeh
 koncih).

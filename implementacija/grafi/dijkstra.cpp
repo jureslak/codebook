@@ -2,26 +2,26 @@
 
 typedef pair<int, int> pii;
 
-int dijkstra(const vector<vector<pii>>& graf, int s, int v) {
-    int n = graf.size(), d, c;
+int dijkstra(const vector<vector<pii>>& graf, int s, int t) {
+    int n = graf.size(), d, u;
     priority_queue<pii, vector<pii>, greater<pii>> q;
     vector<bool> visited(n, false);
-    vector<int> raz(n);
+    vector<int> dist(n);
 
-    q.push({0, s});
+    q.push({0, s});  // {cena, tocka}
     while (!q.empty()) {
-        tie(d, c) = q.top();
+        tie(d, u) = q.top();
         q.pop();
 
-        if (visited[c]) continue;
-        visited[c] = true;
-        raz[c] = d;
+        if (visited[u]) continue;
+        visited[u] = true;
+        dist[u] = d;
 
-        if (c == v) break;  // ce iscemo do vseh tock spremeni v --n == 0
+        if (u == t) break;  // ce iscemo do vseh tock spremeni v --n == 0
 
-        for (const auto& p : graf[c])
+        for (const auto& p : graf[u])
             if (!visited[p.first])
                 q.push({d + p.second, p.first});
     }
-    return raz[v];
+    return dist[t];
 }

@@ -7,19 +7,19 @@ vector<int> dijkstra_square(const vector<vector<pair<int, int>>>& graf, int s, i
     dist[s] = 0;
     vector<bool> visited(n, false);
     for (int i = 0; i < n; ++i) {
-        int v = -1;
+        int u = -1;
         for (int j = 0; j < n; ++j)
-            if (!visited[j] && (v == -1 || dist[j] < dist[v]))
-                v = j;                         // vertex with minimum dist
-        if (v == -1 || dist[v] == INF) break;  // disconnected graph
-        if (v == t) break;  // found shortest path to target
-        visited[v] = true;
+            if (!visited[j] && (u == -1 || dist[j] < dist[u]))
+                u = j;                         // vertex with minimum dist
+        if (u == -1 || dist[u] == INF) break;  // disconnected graph
+        if (u == t) break;  // found shortest path to target
+        visited[u] = true;
 
-        for (const auto& edge : graf[v]) {
+        for (const auto& edge : graf[u]) {
             tie(to, len) = edge;
-            if (dist[v] + len < dist[to]) {  // if path can be improved via me
-                dist[to] = dist[v] + len;
-                prev[to] = v;
+            if (dist[u] + len < dist[to]) {  // if path can be improved via me
+                dist[to] = dist[u] + len;
+                prev[to] = u;
             }
         }
     }  // v dist so sedaj razdalje od s do vseh, ki so bližje kot t (in t)
