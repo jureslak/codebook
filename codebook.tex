@@ -226,6 +226,20 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/kruskal_minimal_spanning_tree.cpp}
 
+\subsection{Največji pretok in najmanjši prerez}
+\label{sec:maxflow}
+
+\subsubsection{Edmonds-Karp}
+\label{sec:maxflow-edmonds-karp}
+\begin{description*}
+  \item[Vhod:] Matrika kapacitet, vse morajo biti nenegativne.
+  \item[Izhod:] Vrne maksimalen pretok, ki je enak minimalnemu prerezu.
+    Konstruira tudi matriko pretoka.
+  \item[Časovna zahtevnost:] $O(V E^2)$
+  \item[Prostorska zahtevnost:] $O(V^2)$
+  \item[Testiranje na terenu:] UVa 820
+\end{description*}
+\cpp{grafi/edmonds_karp_maximal_flow.cpp}
 
 \subsection{Največje prirejanje in najmanjše pokritje}
 \label{sec:mbm}
