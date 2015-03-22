@@ -213,8 +213,18 @@ Napotki zame:
 \end{description*}
 \cpp{grafi/prim_minimal_spanning_tree.cpp}
 
-
-% \subsubsection{Kruskal}
+\subsubsection{Kruskal}
+\label{sec:mst-kruskal}
+\begin{description*}
+  \item[Vhod:] Neusmerjen povezan graf s poljubnimi cenami povezav.
+  \item[Izhod:] Vrne ceno najmanjšega vpetega drevesa. Z lahkoto to zamenjamo z
+    maksimalnim (ali katerokoli podobno operacijo) drevesom.
+  \item[Časovna zahtevnost:] $O(E\log(E))$, dober za redke grafe. Če so povezave
+    že sortirane, samo $O(E \alpha(V))$.
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:] UVa 11631
+\end{description*}
+\cpp{grafi/kruskal_minimal_spanning_tree.cpp}
 
 
 \subsection{Največje prirejanje in najmanjše pokritje}
