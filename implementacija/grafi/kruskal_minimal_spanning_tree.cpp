@@ -32,15 +32,12 @@ int kruskal_minimal_spanning_tree(int n, int m, int E[][3]) {
     parent.assign(n, 0);
     for (int i = 0; i < n; ++i) parent[i] = i;
     vector<tuple<int, int, int>> edges;
-    for (int i = 0; i < m; ++i) edges.emplace_back(E[i][0], E[i][1], E[i][2]);
-    sort(edges.begin(), edges.end(),
-        [] (const tuple<int, int, int>& a, const tuple<int, int, int>& b) {
-            return get<2>(a) < get<2>(b);
-        });
+    for (int i = 0; i < m; ++i) edges.emplace_back(E[i][2], E[i][0], E[i][1]);
+    sort(edges.begin(), edges.end());
 
     int sum = 0, a, b, c, edge_count = 0;
-    for (int i = 0; i < m; ++i) {  // samo toliko povezav imamo
-        tie(a, b, c) = edges[i];
+    for (int i = 0; i < m; ++i) {
+        tie(c, a, b) = edges[i];
         if (unija(a, b)) {
             sum += c;
             edge_count++;
