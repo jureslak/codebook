@@ -89,6 +89,7 @@ Napotki zame:
 \begin{itemize*}
   \item podrobno in pozorno preberi navodila
   \item pazi na \texttt{double} in \texttt{ull}, oceni velikost rezultata
+  \item popucaj podatke med testnimi primeri
 \end{itemize*}
 
 \section{Grafi}
@@ -269,7 +270,7 @@ koncih).
     hranimo števila. Želimo hitro posodabljati elemente in odgovarjati na queryje
     po vsoti podseznamov.
     \begin{itemize*}
-      \item preberi vsoto do indeksa $x$ (poljuben podseznam, $read(b) - read(a)$)
+      \item preberi vsoto do indeksa $x$ (za poljuben podseznam, $read(b) - read(a)$)
       \item posodobi število na indeksu $x$
       \item preberi število na indeksu $x$.
     \end{itemize*}
@@ -278,6 +279,28 @@ koncih).
   \item[Testiranje na terenu:]\url{http://putka.upm.si/competitions/upm2013-finale/safety}
 \end{description*}
 \cpp{ps/fenwick_tree.cpp}
+
+\subsection{Fenwick tree ($\mathbf n$-dim)}
+\label{sec:fenwick-nd}
+\begin{description*}
+  \item[Operacije:] Imamo $n$-dim tabelo dimenzij $d_1 \times d_2 \times
+    \dots \times d_n$ z
+    zero-based indeksi v kateri hranimo števila.
+    Želimo hitro posodabljati elemente in odgovarjati na queryje
+    po vsoti podkvadrov.
+    \begin{itemize*}
+      \item preberi vsoto do vključno indeksa $\underline{x}$
+      \item posodobi število na indeksu $\underline{x}$
+      \item preberi vsoto na podkvadru (pravilo vključitev in izključitev)
+    \end{itemize*}
+    Funkcije so napisane za 3D, samo dodaj ali odstrani for zanke za višje /
+    nižje dimenzije in na ne kockasto tabelo.
+  \item[Časovna zahtevnost:] kumulativna vsota in update $O(\log(d_1 + \dots + d_n))$, za vsoto podkvadra
+    $O(2^d\log(d_1+\dots+d_n))$.
+  \item[Prostorska zahtevnost:] $O(d_1\cdots d_n)$
+  \item[Testiranje na terenu:]\url{http://putka.upm.si/tasks/2010/2010_3kolo/stanovanja}
+\end{description*}
+\cpp{ps/fenwick_tree_nd.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}

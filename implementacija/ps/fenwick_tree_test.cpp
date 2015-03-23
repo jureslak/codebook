@@ -2,7 +2,7 @@
 
 #include "gtest/gtest.h"
 
-TEST(FenwickTest, FenwickTest) {
+TEST(FenwickTest, FenwickTree) {
     for (int i = 1; i <= 16; ++i) {
         ASSERT_EQ(0, readSingle(i));
         ASSERT_EQ(0, read(i));
