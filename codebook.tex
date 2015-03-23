@@ -259,6 +259,26 @@ koncih).
 \end{description*}
 \cpp{grafi/bipartite_matching.cpp}
 
+\section{Podatkovne strukture}
+\label{sec:ps}
+
+\subsection{Fenwick tree}
+\label{sec:fenwick}
+\begin{description*}
+  \item[Operacije:] Imamo tabelo z indeksi $1 \leq x \leq 2^k$ v kateri
+    hranimo števila. Želimo hitro posodabljati elemente in odgovarjati na queryje
+    po vsoti podseznamov.
+    \begin{itemize*}
+      \item preberi vsoto do indeksa $x$ (poljuben podseznam, $read(b) - read(a)$)
+      \item posodobi število na indeksu $x$
+      \item preberi število na indeksu $x$.
+    \end{itemize*}
+  \item[Časovna zahtevnost:] $O(k)$ na operacijo
+  \item[Prostorska zahtevnost:] $O(2^k)$
+  \item[Testiranje na terenu:]\url{http://putka.upm.si/competitions/upm2013-finale/safety}
+\end{description*}
+\cpp{ps/fenwick_tree.cpp}
+
 \section{Teorija števil}
 \label{sec:ts}
 
