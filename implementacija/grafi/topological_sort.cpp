@@ -1,14 +1,11 @@
 #include "topological_sort.h"
 
-vector<int> topological_sort(int n, int m, const int E[][2]) {
-    vector<vector<int>> graf(n);
+vector<int> topological_sort(const vector<vector<int>>& graf) {
+    int n = graf.size();
     vector<int> ingoing(n, 0);
-
-    for (int i = 0; i < m; ++i) {
-        int a = E[i][0], b = E[i][1];
-        graf[a].push_back(b);
-        ingoing[b]++;
-    }
+    for (int i = 0; i < n; ++i)
+        for (const auto& u : graf[i])
+            ingoing[u]++;
 
     queue<int> q;  // morda priority_queue, če je vrstni red pomemben
     for (int i = 0; i < n; ++i)

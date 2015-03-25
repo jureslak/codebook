@@ -74,6 +74,13 @@
   \scalebox{2}{Pitoni\textbf{++}}\\[4ex]
   Žiga Gosar, Maks Kolman, Jure Slak
   \vfill
+  \parbox{0.55\textwidth}{
+  \begin{itemize*}
+    \item podrobno in pozorno preberi navodila
+    \item pazi na \texttt{double} in \texttt{ull}
+    \item počisti podatke med testnimi primeri
+  \end{itemize*}}
+  \vfill
   verzija: \today
 \end{center}
 
@@ -83,32 +90,34 @@
 
 \newpage
 
-\setcounter{section}{-1}
-\section{Uvod}
-Napotki zame:
-\begin{itemize*}
-  \item podrobno in pozorno preberi navodila
-  \item pazi na \texttt{double} in \texttt{ull}, oceni velikost rezultata
-  \item popucaj podatke med testnimi primeri
-\end{itemize*}
-
 \section{Grafi}
 \label{sec:grafi}
 
 \subsection{Topološko sortiranje}
 \begin{description*}
-  \item[Vhod:] Število vozlišč $n$ in število povezav $m$ ter seznam povezav $E$
-    oblike $u \to v$ dolžine $m$. Usmerjen graf $G$ je tako sestavljen iz vozlišč z oznakami
-    0 do $n-1$ in povezavami iz $E$. $G$ ne sme imeti zank, če pa jih ima, se
+  \item[Vhod:] Usmerjen graf $G$ brez ciklov. $G$ ne sme imeti zank, če pa jih ima, se
     jih lahko brez škode odstrani.
   \item[Izhod:] Topološka ureditev usmerjenega grafa $G$, to je seznam vozlišč v takem
     vrstnem redu, da nobena povezava ne kaže nazaj. Če je vrnjeni seznam krajši
     od $n$, potem ima $G$ cikle.
   \item[Časovna zahtevnost:] $O(V + E)$
-  \item[Prostorska zahtevnost:] $O(V)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
   \item[Testiranje na terenu:] UVa 10305
 \end{description*}
 \cpp{grafi/topological_sort.cpp}
+
+\subsection{Najdaljša pot v DAGu}
+\begin{description*}
+  \item[Vhod:] Usmerjen utežen graf $G$ brez ciklov in vozlišči $s$ in $t$. $G$ ne sme imeti zank, če pa jih ima, se
+    jih lahko brez škode odstrani.
+  \item[Izhod:] Dolžino najdaljše poti med $s$ in $t$, oz.\ $-1$, če ta pot ne
+    obstaja. Z lahkoto najdemo tudi dejansko pot (shranjujemo predhodnika) ali
+    najkrajšo pot (max $\to$ min).
+  \item[Časovna zahtevnost:] $O(V + E)$
+  \item[Prostorska zahtevnost:] $O(V + E)$
+  \item[Testiranje na terenu:] UVa 103
+\end{description*}
+\cpp{grafi/longest_path_in_a_dag.cpp}
 
 \subsection{Mostovi in prerezna vozlišča grafa}
 \label{sec:bridge}
