@@ -77,7 +77,7 @@
   \parbox{0.55\textwidth}{
   \begin{itemize*}
     \item podrobno in pozorno preberi navodila
-    \item pazi na \texttt{double} in \texttt{ull}
+    \item pazi na \texttt{double} in \ull
     \item počisti podatke med testnimi primeri
   \end{itemize*}}
   \vfill
@@ -310,6 +310,22 @@ koncih).
   \item[Testiranje na terenu:]\url{http://putka.upm.si/tasks/2010/2010_3kolo/stanovanja}
 \end{description*}
 \cpp{ps/fenwick_tree_nd.cpp}
+
+\section{Algoritmi}
+\label{sec:algo}
+
+\subsection{Najdaljše skupno podzaporedje}
+\label{sec:lcs}
+\begin{description*}
+  \item[Vhod:] Dve zaporedji $a$ in $b$ dolžin $n$ in $m$.
+  \item[Izhod:] Najdaljše skupno podzaporedje (ne nujno strnjeno) $LCS$. Lahko dobimo
+    samo njegovo dolžino. Problem je povezan z najkrajšim skupnim nadzaporedjem
+    ($SCS$). Velja $SCS + LCS = n + m$.
+  \item[Časovna zahtevnost:] $O(nm)$
+  \item[Prostorska zahtevnost:] $O(nm)$ za podzaporedje, $O(m)$ za dolžino.
+  \item[Testiranje na terenu:] UVa 10405
+\end{description*}
+\cpp{algo/longest_common_subsequence.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
