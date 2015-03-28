@@ -304,8 +304,8 @@ koncih).
     \end{itemize*}
     Funkcije so napisane za 3D, samo dodaj ali odstrani for zanke za višje /
     nižje dimenzije in na ne kockasto tabelo.
-  \item[Časovna zahtevnost:] kumulativna vsota in update $O(\log(d_1 + \dots + d_n))$, za vsoto podkvadra
-    $O(2^d\log(d_1+\dots+d_n))$.
+  \item[Časovna zahtevnost:] kumulativna vsota in update $O(\log(d_1 + \dots +
+    d_n))$, za vsoto podkvadra $O(2^d\log(d_1+\dots+d_n))$.
   \item[Prostorska zahtevnost:] $O(d_1\cdots d_n)$
   \item[Testiranje na terenu:]\url{http://putka.upm.si/tasks/2010/2010_3kolo/stanovanja}
 \end{description*}
@@ -326,6 +326,24 @@ koncih).
   \item[Testiranje na terenu:] UVa 10405
 \end{description*}
 \cpp{algo/longest_common_subsequence.cpp}
+
+\subsection{Najdaljše naraščajoče podzaporedje}
+\label{sec:lis}
+\begin{description*}
+  \item[Vhod:] Zaporedje elementov na katerih imamo linearno urejenost.
+  \item[Izhod:] Najdaljše naraščajoče podzaporedje.
+  \item[Časovna zahtevnost:] $O(n \log(n))$ in $O(n^2)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] UVa 103
+  \item[Opomba:] Za hitro verzijo je zaradi bisekcije potrebna linearna
+    urejenost elementov. Pri $n^2$ verziji je dovolj delna urejenost. V tem primeru je
+    elemente morda treba urediti, tako da je potem potrebno za urejanje izbrati
+    neko linearno razširitev dane delne urejenosti. Pri obeh verzijah elementi
+    niso omejeni na števila, vendar pri prvi ne moremo samo zamenjati tipa, ki
+    ga funkcija vrača, lažje je spremeniti, da vrača indekse elementov namesto
+    dejanskega zaporedja.
+\end{description*}
+\cpp{algo/longest_increasing_subsequence.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
