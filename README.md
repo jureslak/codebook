@@ -64,7 +64,7 @@ Pri uporabi `full_test.sh` je možno podati naslednje flage:
 
     $./full_test.sh -f Gcd*
 
- * `-n` ali `--nostylecheck`, ki požene teste brez preverjanja stila kode (kar traja dolgo). Ob
+ * `-n` ali `--nostylecheck`, ki požene teste brez preverjanja stila kode (torej program precej hitrejši, ker preverjanje stila traja stoletja). Ob
    commitu se to še vedno preveri.
 
     $./full_test.sh -n
