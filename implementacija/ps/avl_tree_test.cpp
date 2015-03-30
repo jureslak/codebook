@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 
 TEST(AvlTree, Insert) {
-    AvlTree t;
+    AvlTree<int> t;
     ASSERT_EQ(0, t.size());
     t.insert(-2);
     ASSERT_EQ(1, t.size());
@@ -28,7 +28,7 @@ TEST(AvlTree, Insert) {
 }
 
 TEST(AvlTree, Delete) {
-    AvlTree t;
+    AvlTree<int> t;
     for (int i = 0; i < 500; i++) t.insert(i % 100);
     ASSERT_EQ(t.size(), 500);
     ASSERT_EQ(true, t.erase(0));

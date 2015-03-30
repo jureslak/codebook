@@ -1,12 +1,5 @@
 #include "basics.h"
 
-const double pi = M_PI;
-const double eps = 1e-7;
-const double inf = numeric_limits<double>::infinity();
-
-enum ITYPE : char { OK, NO, EQ };
-typedef complex<double> P;
-
 double dot(const P& p, const P& q) {
     return p.real() * q.real() + p.imag() * q.imag();
 }
@@ -46,40 +39,6 @@ double area(const vector<P>& poly) {  // signed
     }
     return A/2;
 }
-// struct L {  // premica, dana z enačbo ax + by = c ali z dvema točkama
-//     double a, b, c;  // lahko tudi int
-L::L() : a(0), b(0), c(0) {}
-L::L(int A, int B, int C) {
-    if (A < 0 || (A == 0 && B < 0)) a = -A, b = -B, c = -C;
-    else a = A, b = B, c = C;
-    int d = gcd(gcd(abs(a), abs(b)), abs(c));  // same sign as A, if nonzero, else B, else C
-    if (d == 0) d = 1;                    // in case of 0 0 0 input
-    a /= d;
-    b /= d;
-    c /= d;
-}
-L::L(double A, double B, double C) {
-    if (A < 0 || (A == 0 && B < 0)) a = -A, b = -B, c = -C;
-    else a = A, b = B, c = C;
-}
-L::L(const P& p, const P& q) : L(imag(q-p), real(p-q), cross(p, q)) {}
-P L::normal() const { return {a, b}; }
-double L::value(const P& p) const { return dot(normal(), p) - c; }
-bool L::operator<(const L& line) const {
-    if (a == line.a) {
-        if (b == line.b) return c < line.c;
-        return b < line.b;
-    }
-    return a < line.a;
-}
-bool L::operator==(const L& line) const {
-    return cross(normal(), line.normal()) < eps && c*line.b == b*line.c;
-}
-//  };  // end struct L
-ostream& operator<<(ostream& os, const L& line) {
-    os << line.a << "x + " << line.b << "y == " << line.c; return os;
-}
-
 double dist_to_line(const P& p, const L& line) {
     return abs(line.value(p)) / abs(line.normal());
 }

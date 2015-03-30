@@ -37,6 +37,7 @@ fi
 echo -e "${BW}Looking for tests ... ${NC}"
 for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(h\)')
 do
+    if [[ "$filename" == *_util.h ]]; then continue; fi
     testname="$(dirname $filename)/$(basename $filename .h)_test.cpp"
     if [ ! -f $testname ]; then
         echo -e "${BR}Filename: ${NC}$filename${BR} does not have a test!"

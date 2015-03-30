@@ -7,9 +7,6 @@
 using std::make_tuple;
 using std::tuple;
 
-typedef complex<double> P;
-enum ITYPE : char { OK, NO, EQ };
-
 TEST(GeomBasicsTest, DotProduct) {
     ASSERT_DOUBLE_EQ(7,   dot({1, 2}, {1, 3}));
     ASSERT_DOUBLE_EQ(0,   dot({-1, 4}, {8, 2}));

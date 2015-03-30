@@ -1,72 +1,51 @@
 #ifndef IMPLEMENTACIJA_GEOM_BASICS_H_
 #define IMPLEMENTACIJA_GEOM_BASICS_H_
 
-#include <algorithm>
-#include <cmath>
-#include <complex>
-#include <limits>
-#include <tuple>
-#include <utility>
-#include <vector>
+#include "basics_util.h"
 
-#include "implementacija/ts/gcd.h"
+const double pi = M_PI;
+const double eps = 1e-9;
+const double inf = numeric_limits<double>::infinity();
 
-using std::complex;
-using std::numeric_limits;
-using std::ostream;
-using std::pair;
-using std::vector;
-using std::abs;
-using std::min;
-using std::max;
-using std::tie;
+enum ITYPE : char { OK, NO, EQ };
+typedef complex<double> P;
 
-
-struct L {
-    double a, b, c;
-    L();
-    L(int A, int B, int C);
-    L(double A, double B, double C);
-    L(const complex<double>& p, const complex<double>& q);
-    complex<double> normal() const;
-    double value(const complex<double>& p) const;
-    bool is_left(const complex<double>& p) const;
-    bool operator<(const L& line) const;
-    bool operator==(const L& line) const;
-    friend ostream& operator<<(ostream& os, const L& line);
+template<typename T>
+struct line_t {  // premica, dana z enačbo ax + by = c ali z dvema točkama
+    double a, b, c;  // lahko tudi int
+    line_t() : a(0), b(0), c(0) {}
+    line_t(int A, int B, int C) {
+        if (A < 0 || (A == 0 && B < 0)) a = -A, b = -B, c = -C;
+        else a = A, b = B, c = C;
+        int d = gcd(gcd(abs(a), abs(b)), abs(c));  // same sign as A, if nonzero, else B, else C
+        if (d == 0) d = 1;                    // in case of 0 0 0 input
+        a /= d;
+        b /= d;
+        c /= d;
+    }
+    line_t(T A, T B, T C) {
+        if (A < 0 || (A == 0 && B < 0)) a = -A, b = -B, c = -C;
+        else a = A, b = B, c = C;
+    }
+    line_t(const P& p, const P& q) : line_t(imag(q-p), real(p-q), cross(p, q)) {}
+    P normal() const { return {a, b}; }
+    double value(const P& p) const { return dot(normal(), p) - c; }
+    bool operator<(const line_t<T>& line) const {  // da jih lahko vržemo v set, če T = int
+        if (a == line.a) {
+            if (b == line.b) return c < line.c;
+            return b < line.b;
+        }
+        return a < line.a;
+    }
+    bool operator==(const line_t<T>& line) const {
+        return cross(normal(), line.normal()) < eps && c*line.b == b*line.c;
+    }
 };
-enum ITYPE : char;
+template<typename T>
+ostream& operator<<(ostream& os, const line_t<T>& line) {
+    os << line.a << "x + " << line.b << "y == " << line.c; return os;
+}
 
-double dot(const complex<double>& p, const complex<double>& q);
-double cross(const complex<double>& p, const complex<double>& q);
-double cross(const complex<double>& p, const complex<double>& q, const complex<double>& r);
-complex<double> perp(const complex<double>& p);
-int sign(double x);
-double polar_angle(const complex<double>& p);
-bool left_turn(const complex<double>& p, const complex<double>& q, const complex<double>& r);
-double area(const complex<double>& a, const complex<double>& b, const complex<double>& c);
-double area(const vector<complex<double>>& poly);
-double dist_to_line(const complex<double>& p, const L& l);
-double dist_to_line(const complex<double>& t, const complex<double>& p1,
-                    const complex<double>& p2);
-double dist_to_segment(const complex<double>& t, const complex<double>& p1,
-                       const complex<double>& p2);
-double great_circle_dist(const complex<double>& a, const complex<double>& b);
-bool point_in_rect(const complex<double>& t, const complex<double>& p1, const complex<double>& p2);
-bool point_in_triangle(const complex<double>& t, const complex<double>& a,
-                       const complex<double>& b, const complex<double>& c);
-ITYPE point_in_poly(const complex<double>& t, const vector<complex<double>>& poly);
-pair<ITYPE, complex<double>> line_line_intersection(const L& p,
-                                                    const L& q);
-pair<ITYPE, complex<double>> line_segment_intersection(const L& p,
-                                                       const complex<double>& u,
-                                                       const complex<double>& v);
-pair<ITYPE, complex<double>> segment_segment_intersection(const complex<double>& p1,
-                                                          const complex<double>& p2,
-                                                          const complex<double>& q1,
-                                                          const complex<double>& q2);
-pair<complex<double>, double> get_circle(const complex<double>& p, const complex<double>& q,
-                                         const complex<double>& r);
-complex<double> get_circle(const complex<double>& p, const complex<double>& q, double r);
+typedef line_t<double> L;
 
 #endif  // IMPLEMENTACIJA_GEOM_BASICS_H_

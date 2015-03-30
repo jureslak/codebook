@@ -58,10 +58,13 @@
 
 \newmintedfile[cppsource]{c++}{linenos=true, mathescape, xleftmargin=0.7cm,
                                fontsize=\scriptsize,baselinestretch=0.9,firstline=3}
+\newmintedfile[cppheadersource]{c++}{linenos=true, mathescape, xleftmargin=0.7cm,
+                                     fontsize=\scriptsize,baselinestretch=0.9,firstline=6}
 \newmintedfile[pysource]{python}{linenos=true, mathescape, xleftmargin=0.7cm,
                                  fontsize=\scriptsize,baselinestretch=0.9}
 
 \newcommand{\cpp}[1]{\cppsource{implementacija/#1}}
+\newcommand{\hpp}[1]{\cppheadersource{implementacija/#1}}
 \newcommand{\ull}{\texttt{unsigned long long}}
 
 \begin{document}
@@ -277,17 +280,20 @@ koncih).
 \begin{description*}
   \item[Operacije:] Klasično uravnoteženo binarno iskalno drevo.
     \begin{itemize*}
-      \item vstavi (doda +1 k countu, če obstaja)
-      \item najdi (vrne pointer na node ali \verb|nullptr|)
-      \item briši (vrne \verb|true|/\verb|false| glede na to ali element
-        obstaja, v resnici samo zmanjša njegov count)
+      \item vstavi: doda +1 k countu, če obstaja
+      \item najdi: vrne pointer na node ali \verb|nullptr|, če ne obstaja
+      \item briši: vrne \verb|true|/\verb|false| glede na to ali element
+        obstaja in samo zmanjša njegov count (memory overhead, ampak who cares)
       \item najdi $n$-tega, vrne \verb|nullptr| če ne obstaja
     \end{itemize*}
   \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
   \item[Prostorska zahtevnost:] $O(n\log(n))$
-  \item[Testiranje na terenu:]\url{http://putka.upm.si/competitions/upm2014-finale/izstevanka}
+  \item[Testiranje na
+    terenu:]\url{http://putka.upm.si/competitions/upm2014-finale/izstevanka}
+  \item[Opombe:] To je lepa implementacija. V praksi ne rabimo vsega public
+    interface-a je dovolj samo imeti nekje globalen root in private metode.
 \end{description*}
-\cpp{ps/avl_tree.cpp}
+\hpp{ps/avl_tree.h}
 
 \subsection{Fenwick tree}
 \label{sec:fenwick}
@@ -497,9 +503,9 @@ Funkcije:
   \item[Prostorska zahtevnost:] $O(\text{št.\ točk})$
   \item[Testiranje na terenu:] Bolj tako, ima pa obsežne unit teste\dots
 \end{description*}
-\label{sec:geom-osnove}
+\hpp{geom/basics.h}
 \cpp{geom/basics.cpp}
-.
+
 \subsection{Konveksna ovojnica}
 \label{sec:convex-hull}
 \begin{description*}

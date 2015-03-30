@@ -1,7 +1,6 @@
 #include "convex_hull.h"
 
 typedef complex<double> P;  // ali int
-double eps = 1e-9;
 
 bool compare(const P& a, const P& b, const P& m) {
     double det = cross(a, m, b);
