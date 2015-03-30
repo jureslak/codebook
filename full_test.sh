@@ -74,7 +74,7 @@ if [ "$STYLECHECK" = "true" ]; then
     do
         dir=`mktemp -d`
         python2 "test/cpplint.py" \
-          "--filter=-legal,-build/include,-runtime/reference,-runtime/threadsafe_fn" \
+          "--filter=-legal,-build/include,-runtime/reference,-runtime/threadsafe_fn,-runtime/explicit,-readability/streams" \
           "--linelength=100" \
           "$filename" 2> "$dir/out"
         exit_code=$?
@@ -86,7 +86,7 @@ if [ "$STYLECHECK" = "true" ]; then
     done
     if [ $ERRORCODE -ne 0 ]; then
         echo -e "${BR}Error: there were sytle mistakes!${NC}"
-        echo "(If you feel errors are unjust, edit this file and add exceptions (ln. 56).)"
+        echo "(If you feel errors are unjust, edit this file and add exceptions (ln. 78).)"
         exit 6
     fi
 fi
