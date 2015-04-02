@@ -368,6 +368,19 @@ koncih).
 \end{description*}
 \cpp{algo/longest_increasing_subsequence.cpp}
 
+\subsection{Podseznam z največjo vsoto}
+\label{sec:max-subarray}
+\begin{description*}
+  \item[Vhod:] Zaporedje elementov $a_i$ dolžine $n$.
+  \item[Izhod:] Največja možna vsota strnjenega podzaporedja $a$ (lahko je tudi
+    prazno). Alternativna verzija tudi vrne iskano zaporedje (najkrajše tako).
+    Tretja verzija poišče $k$-to največjo vsoto.
+  \item[Časovna zahtevnost:] $O(n)$, $O(n\log(n)+nk)$
+  \item[Prostorska zahtevnost:] $O(n)$.
+  \item[Testiranje na terenu:] \url{http://www.codechef.com/problems/KSUBSUM}
+\end{description*}
+\cpp{algo/maximum_subarray.cpp}
+
 \section{Teorija števil}
 \label{sec:ts}
 
