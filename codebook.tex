@@ -275,7 +275,24 @@ koncih).
 \section{Podatkovne strukture}
 \label{sec:ps}
 
-\subsection{Avl tree}
+\subsection{Statično binarno iskalno drevo}
+\label{sec:bst}
+\begin{description*}
+  \item[Operacije:] Klasično uravnoteženo binarno iskalno drevo.
+    \begin{itemize*}
+      \item vstavi: doda +1 k countu na mestu \texttt{idx}
+      \item briši: vrne \verb|true|/\verb|false| glede na to ali element
+        obstaja in če, zmanjša njegov count za 1
+      \item najdi $k$-tega: vrne indeks $k$-tega elementa
+    \end{itemize*}
+  \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2011/2011_finale/kitajci}
+\end{description*}
+\cpp{ps/static_binary_search_tree.cpp}
+
+\subsection{Avl drevo}
 \label{sec:avl}
 \begin{description*}
   \item[Operacije:] Klasično uravnoteženo binarno iskalno drevo.
@@ -287,7 +304,7 @@ koncih).
       \item najdi $n$-tega, vrne \verb|nullptr| če ne obstaja
     \end{itemize*}
   \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
-  \item[Prostorska zahtevnost:] $O(n\log(n))$
+  \item[Prostorska zahtevnost:] $O(n)$
   \item[Testiranje na
     terenu:]\url{http://putka.upm.si/competitions/upm2014-finale/izstevanka}
   \item[Opombe:] To je lepa implementacija. V praksi ne rabimo vsega public
@@ -295,7 +312,7 @@ koncih).
 \end{description*}
 \hpp{ps/avl_tree.h}
 
-\subsection{Fenwick tree}
+\subsection{Fenwickovo drevo}
 \label{sec:fenwick}
 \begin{description*}
   \item[Operacije:] Imamo tabelo z indeksi $1 \leq x \leq 2^k$ v kateri
@@ -312,7 +329,7 @@ koncih).
 \end{description*}
 \cpp{ps/fenwick_tree.cpp}
 
-\subsection{Fenwick tree ($\mathbf n$-dim)}
+\subsection{Fenwickovo drevo ($\mathbf n$-dim)}
 \label{sec:fenwick-nd}
 \begin{description*}
   \item[Operacije:] Imamo $n$-dim tabelo dimenzij $d_1 \times d_2 \times
