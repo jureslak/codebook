@@ -16,13 +16,13 @@ vector<int> points;
 struct Node {  // segment tree
     int s, e, m, c, a;  // start, end, middle, count, area
     Node *left, *right;
-    Node(int s_, int e_) : s(s_), e(e_), m((s+e)/2), c(0), a(0), left(NULL), right(NULL) {
+    Node(int s_, int e_) : s(s_), e(e_), m((s+e)/2), c(0), a(0), left(nullptr), right(nullptr) {
         if (e-s == 1) return;
         left = new Node(s, m);
         right = new Node(m, e);
     }
     int add(int f, int t) {  // returns area
-        if (s >= f && e <= t) {
+        if (f <= s && e <= t) {
             c++;
             return a = points[e] - points[s];
         }
@@ -32,10 +32,10 @@ struct Node {  // segment tree
         return a;
     }
     int remove(int f, int t) {  // returns area
-        if (s >= f && e <= t) {
+        if (f <= s && e <= t) {
             c--;
             if (c == 0) {  // če nima lastnega intervala
-                if (left == NULL) a = 0;  // če je otrok je area 0
+                if (left == nullptr) a = 0;  // če je list je area 0
                 else a = left->a + right->a;  // če ne je vsota otrok
             }
             return a;

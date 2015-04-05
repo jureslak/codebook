@@ -283,7 +283,7 @@ koncih).
       \item vstavi: doda +1 k countu na mestu \texttt{idx}
       \item briši: vrne \verb|true|/\verb|false| glede na to ali element
         obstaja in če, zmanjša njegov count za 1
-      \item najdi $k$-tega: vrne indeks $k$-tega elementa
+      \item najdi $k$-tega: vrne indeks $k$-tega elementa. Zero based.
     \end{itemize*}
   \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
   \item[Prostorska zahtevnost:] $O(n)$
@@ -291,6 +291,30 @@ koncih).
     \url{http://putka.upm.si/tasks/2011/2011_finale/kitajci}
 \end{description*}
 \cpp{ps/static_binary_search_tree.cpp}
+
+\subsection{Drevo segmentov}
+\label{sec:segment-tree}
+\begin{description*}
+  \item[Operacije:] Segment tree deljen po fiksnih točkah z dinamično alokacijo
+    node-ov. Ob ustvarjanju roota povemo razpon vstavljanja, končne točke so
+    postavljene po celih številih.
+
+    Za remove, ki ne zagotavlja nujno, da obstajajo stvari ki jih
+    brišemo, se je treba malo bolj potruditi. Najprej odstranimo vse na
+    trenutnem levelu, kolikor lahko, nato pa se v vsakem primeru pokličemo
+    dalje (če je še kaj za odstranit in node-i obstajajo). Prav tako lahko
+    vrnemo število izbrisanih stvari.
+    \begin{itemize*}
+      \item vstavi neko vrednost na intervalu $[a, b]$
+      \item briši na intervalu $[a, b]$
+      \item dobi vrednost na intervalu $[a, b]$
+      \item najdi $k$-tega
+    \end{itemize*}
+  \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] \url{http://putka.upm.si/competitions/upm2014-finale/izstevanka}
+\end{description*}
+\hpp{ps/segment_tree.h}
 
 \subsection{Avl drevo}
 \label{sec:avl}

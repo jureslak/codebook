@@ -25,7 +25,7 @@ USER_DIR = ../implementacija
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -I../ -Wall -Wextra -pthread -std=c++11 -O2
+CXXFLAGS += -g -I../ -Wall -Werror -Wextra -pthread -std=c++11 -O2
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
