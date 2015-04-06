@@ -3645,9 +3645,10 @@ def CheckRValueReference(filename, clean_lines, linenum, nesting_state, error):
   # if what's to the left of "&&" is a type or not.
   and_pos = len(match.group(1))
   if IsRValueType(clean_lines, nesting_state, linenum, and_pos):
-    if not IsRValueAllowed(clean_lines, linenum):
-      error(filename, linenum, 'build/c++11', 3,
-            'RValue references are an unapproved C++ feature.')
+      pass
+#      if not IsRValueAllowed(clean_lines, linenum):
+#        error(filename, linenum, 'build/c++11', 3,
+#              'RValue references are an unapproved C++ feature.')
   else:
     error(filename, linenum, 'whitespace/operators', 3,
           'Missing spaces around &&')
