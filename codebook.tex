@@ -417,10 +417,24 @@ koncih).
     prazno). Alternativna verzija tudi vrne iskano zaporedje (najkrajše tako).
     Tretja verzija poišče $k$-to največjo vsoto.
   \item[Časovna zahtevnost:] $O(n)$, $O(n\log(n)+nk)$
-  \item[Prostorska zahtevnost:] $O(n)$.
+  \item[Prostorska zahtevnost:] $O(n)$
   \item[Testiranje na terenu:] \url{http://www.codechef.com/problems/KSUBSUM}
 \end{description*}
 \cpp{algo/maximum_subarray.cpp}
+
+\subsection{Leksikografsko minimalna rotacija}
+\label{sec:min-rotation}
+\begin{description*}
+  \item[Vhod:] Niz znakov $s$ dolžine $n$.
+  \item[Izhod:] Indeks $i$, tako da je string $s[i:] + s[:i]$ leksikografsko
+    najmanjši, izmed vseh možnih rotacij $s$.
+  \item[Časovna zahtevnost:] $O(n)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] UVa 719
+  \item[Opomba:] Če smo res na testnem s prostorom, lahko funkcija sprejme
+    dejanski string in ga ne podvoji, ter dela vse indekse po modulu $n$.
+\end{description*}
+\cpp{algo/minimal_rotation.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
