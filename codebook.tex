@@ -431,10 +431,36 @@ koncih).
   \item[Časovna zahtevnost:] $O(n)$
   \item[Prostorska zahtevnost:] $O(n)$
   \item[Testiranje na terenu:] UVa 719
-  \item[Opomba:] Če smo res na testnem s prostorom, lahko funkcija sprejme
+  \item[Opomba:] Če smo res na tesnem s prostorom, lahko funkcija sprejme
     dejanski string in ga ne podvoji, ter dela vse indekse po modulu $n$.
 \end{description*}
 \cpp{algo/minimal_rotation.cpp}
+
+\subsection{BigInt in Karatsuba}
+\label{sec:bigint}
+Class za računanje z velikimi števili, v poljubni bazi. IO deluje samo v
+desetiški.
+\begin{description*}
+  \item[Operacije:] Seštevanje, odštevanje, množenje, primerjanje.
+    \begin{itemize*}
+      \item seštevanje: samostojno, za negativne rabi $-$ in $<$.
+      \item odštevanje: samostojno, če bo razlika pozitivna. Za negativne
+        prevedi na seštevanje $a + (-b)$.
+      \item množenje: rabi $+$, $\ll$ in $*$ s števko. Za negativne samo malo
+        manipulacije predznakov. Lahko uporabiš tudi karatsubo.
+      \item primerjanje: samostojno, za negativne samo malo manipulacije
+        predznakov.
+    \end{itemize*}
+  Jasno ni treba implementirati vsega. $+$ in $*$ nista tako zelo počasna, tako
+  da verzije $+=$ ipd. niso nujno potrebne.
+  \item[Časovna zahtevnost:] $O(n)$ za $+$, $-$, $*$ stevka, $O(n^2)$ za $*$,
+    $O(n^{1.585})$ za karatsubo.
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/test_okolja/odstevanje} in
+    \url{http://putka.upm.si/tasks/test_okolja/sestevanje}
+\end{description*}
+\hpp{algo/bigint.h}
 
 \section{Teorija števil}
 \label{sec:ts}
