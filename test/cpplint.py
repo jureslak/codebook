@@ -3766,20 +3766,20 @@ def CheckBraces(filename, clean_lines, linenum, error):
 
   # If braces come on one side of an else, they should be on both.
   # However, we have to worry about "else if" that spans multiple lines!
-  if Search(r'else if\s*\(', line):       # could be multi-line if
-    brace_on_left = bool(Search(r'}\s*else if\s*\(', line))
-    # find the ( after the if
-    pos = line.find('else if')
-    pos = line.find('(', pos)
-    if pos > 0:
-      (endline, _, endpos) = CloseExpression(clean_lines, linenum, pos)
-      brace_on_right = endline[endpos:].find('{') != -1
-      if brace_on_left != brace_on_right:    # must be brace after if
-        error(filename, linenum, 'readability/braces', 5,
-              'If an else has a brace on one side, it should have it on both')
-  elif Search(r'}\s*else[^{]*$', line) or Match(r'[^}]*else\s*{', line):
-    error(filename, linenum, 'readability/braces', 5,
-          'If an else has a brace on one side, it should have it on both')
+#    if Search(r'else if\s*\(', line):       # could be multi-line if
+#      brace_on_left = bool(Search(r'}\s*else if\s*\(', line))
+#      # find the ( after the if
+#      pos = line.find('else if')
+#      pos = line.find('(', pos)
+#      if pos > 0:
+#        (endline, _, endpos) = CloseExpression(clean_lines, linenum, pos)
+#        brace_on_right = endline[endpos:].find('{') != -1
+#        if brace_on_left != brace_on_right:    # must be brace after if
+#          error(filename, linenum, 'readability/braces', 5,
+#                'If an else has a brace on one side, it should have it on both')
+#    elif Search(r'}\s*else[^{]*$', line) or Match(r'[^}]*else\s*{', line):
+#      error(filename, linenum, 'readability/braces', 5,
+#            'If an else has a brace on one side, it should have it on both')
 
   # Likewise, an else should never have the else clause on the same line
 #    if Search(r'\belse [^\s{]', line) and not Search(r'\belse if\b', line):
