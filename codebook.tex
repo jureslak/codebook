@@ -409,6 +409,19 @@ koncih).
 \end{description*}
 \cpp{algo/longest_increasing_subsequence.cpp}
 
+\subsection{Najdaljši strnjen palindrom}
+\label{sec:max-palindrome}
+\begin{description*}
+  \item[Vhod:] Niz $s$ dolžine $n$.
+  \item[Izhod:] Števili $f$ in $t$, tako da je niz $s[f:t]$ palindrom največje
+    dolžine, ki ga je možno najti v $s$. No nujno edini, niti prvi. Uporablja
+    Mancherjev algoritem.
+  \item[Časovna zahtevnost:] $O(n)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] \url{http://www.spoj.com/problems/LPS/}
+\end{description*}
+\cpp{algo/longest_palindrome.cpp}
+
 \subsection{Podseznam z največjo vsoto}
 \label{sec:max-subarray}
 \begin{description*}
