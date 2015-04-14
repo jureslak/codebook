@@ -239,6 +239,22 @@
 \end{description*}
 \cpp{grafi/kruskal_minimal_spanning_tree.cpp}
 
+\subsection{Najnižji skupni prednik}
+\label{sec:lca}
+\begin{description*}
+  \item[Vhod:] Drevo, podano s tabelo staršev. Vozlišče je koren, če je starš
+    samemu sebi. Za queryje najprej potrebuješ pomožno tabelo skokov na višja
+    vozlišča in tabelo nivojev.
+  \item[Izhod:] Za dani vozlišči $u$ in $v$, vrne njunega najnižjega skupnega
+    prednika, to je tako vozlišče $p$, da je $p$ leži na poti od $u$ do korena
+    in od $v$ do korena, ter je najdlje stran od korena drevesa.
+  \item[Časovna zahtevnost:] $O(\log(n))$ na query, s $O(n\log(n))$
+    predprocesiranja.
+  \item[Prostorska zahtevnost:] $O(n\log(n))$
+  \item[Testiranje na terenu:] \url{http://www.spoj.com/submit/LCA/}
+\end{description*}
+\cpp{grafi/lowest_common_ancestor.cpp}
+
 \subsection{Največji pretok in najmanjši prerez}
 \label{sec:maxflow}
 
