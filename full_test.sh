@@ -67,6 +67,8 @@ if [ $? -ne 0 ]; then
     exit 5
 fi
 
+STYLEFILTERS="-legal,-build/include,-runtime/reference,-runtime/threadsafe_fn, \
+              -runtime/explicit,-readability/streams,-whitespace/empty_loop_body"
 if [ "$STYLECHECK" = "true" ]; then
     echo -e "${BW}Checking code style ...${NC}"
     cd ..
@@ -74,8 +76,7 @@ if [ "$STYLECHECK" = "true" ]; then
     for filename in $(find -regex '\./implementacija/\([^/]+/\)+[^.][^/]+\.\(cpp\|cc\|c\|h\)')
     do
         dir=`mktemp -d`
-        python2 "test/cpplint.py" \
-          "--filter=-legal,-build/include,-runtime/reference,-runtime/threadsafe_fn,-runtime/explicit,-readability/streams" \
+        python2 "test/cpplint.py" "--filter=$STYLEFILTERS" \
           "--linelength=100" \
           "$filename" 2> "$dir/out"
         exit_code=$?
