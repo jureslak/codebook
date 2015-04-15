@@ -391,6 +391,23 @@ koncih).
 \end{description*}
 \cpp{ps/fenwick_tree_nd.cpp}
 
+\subsection{Trie}
+\label{sec:trie}
+\begin{description*}
+  \item[Operacije:] Prefix tree, hranimo besede, crko po crko na nivoju.
+    \begin{itemize*}
+      \item vstavi besedo
+      \item največji skupen prefix z dano besedo
+      \item največji skupen prefix med besedami v drevesu
+    \end{itemize*}
+  \item[Časovna zahtevnost:] $O(w)$ za \verb|add| in \verb|common_prefix| ter
+    $O(\#nodes)$ za najdaljši prefix med vsemi besedami.
+  \item[Prostorska zahtevnost:] $O(n w)$, kjer je $n$ število besed, v praksi
+    manj, ker se prekrivajo.
+  \item[Testiranje na terenu:] \url{http://www.spoj.com/problems/PRHYME/} TODO
+\end{description*}
+\hpp{ps/trie.h}
+
 \section{Algoritmi}
 \label{sec:algo}
 
@@ -601,7 +618,7 @@ desetiški.
     (\alpha_k + 1). \]
   \item[Časovna zahtevnost:] $O(\sqrt(n))$
   \item[Prostorska zahtevnost:] $O(1)$
-  \item[Testiranje na terenu:]
+  \item[Testiranje na terenu:] \url{https://projecteuler.net/problem=12}
 \end{description*}
 \cpp{ts/number_of_divisors.cpp}
 
