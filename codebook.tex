@@ -592,6 +592,19 @@ desetiški.
 \end{description*}
 \cpp{ts/eratosthenes_sieve.cpp}
 
+\subsection{Število deliteljev}
+\label{sec:tau}
+\begin{description*}
+  \item[Vhod:] Število $n \in \N$.
+  \item[Izhod:] Število pozitivnih deliteljev $n$, $\tau(n)$. Velja da za $n =
+    p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, je \[ \tau(n) = (\alpha_1 + 1) \cdots
+    (\alpha_k + 1). \]
+  \item[Časovna zahtevnost:] $O(\sqrt(n))$
+  \item[Prostorska zahtevnost:] $O(1)$
+  \item[Testiranje na terenu:]
+\end{description*}
+\cpp{ts/number_of_divisors.cpp}
+
 \section{Geometrija}
 \label{sec:geom}
 Zaenkrat obravnavamo samo ravninsko geometrijo.
