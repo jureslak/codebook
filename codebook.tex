@@ -644,6 +644,23 @@ desetiški.
 \end{description*}
 \cpp{ts/number_of_divisors.cpp}
 
+\subsection{Binomski koeficienti}
+\label{sec:binom}
+\begin{description*}
+  \item[Vhod:] Števili $n, k \in \Z$.
+  \item[Izhod:] Binomski koeficient $\binom{n}{k} =
+    \begin{cases}
+      \frac{n!}{k!(n-k)!} & n, k \geq 0 \\
+      0 & \text{ sicer}
+    \end{cases}$ \\
+    Za velike vrednosti lahko izračunamo aproksimacijo s pomočjo logaritma gama
+    funkcije.
+  \item[Časovna zahtevnost:] $O(\min\{k, n-k\})$
+  \item[Prostorska zahtevnost:] $O(1)$
+  \item[Testiranje na terenu:] TODO
+\end{description*}
+\cpp{ts/binomial.cpp}
+
 \section{Geometrija}
 \label{sec:geom}
 Zaenkrat obravnavamo samo ravninsko geometrijo.
