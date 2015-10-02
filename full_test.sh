@@ -59,7 +59,6 @@ if [ $? -ne 0 ]; then
     exit 4
 fi
 
-
 echo -e "${BW}Running tests ...${NC}"
 ./run_tests --gtest_filter="$FILTER"
 if [ $? -ne 0 ]; then

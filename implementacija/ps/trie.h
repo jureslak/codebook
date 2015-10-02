@@ -29,7 +29,7 @@ struct Node {
             }
         }
     }
-    int longest_common_prefix_length() {  // najdaljši skupen prefix med besedami v drevesu
+    int longest_common_prefix_length() {  // najdaljši skupen prefix med besedami v drevesu + 1
         int childc = 0;
         int maxl = 0;
         for (int i = 0; i < 26; ++i) {
