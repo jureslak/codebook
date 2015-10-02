@@ -77,11 +77,33 @@
   \scalebox{2}{Pitoni\textbf{++}}\\[4ex]
   Žiga Gosar, Maks Kolman, Jure Slak
   \vfill
-  \parbox{0.55\textwidth}{
+  \parbox{0.65\textwidth}{
   \begin{itemize*}
     \item podrobno in pozorno preberi navodila
     \item pazi na \texttt{double} in \ull
     \item počisti podatke med testnimi primeri
+    \item uporabi \texttt{cin.sync\_with\_stdio(false);}\\
+      \texttt{cin.tie(nullptr);} in nikoli \texttt{endl} za hitrejši IO
+    \item uporabi \texttt{numeric\_limits<tip>::max()} \\ ali \texttt{infinity()},
+      \texttt{min()} za robne vrednosti
+    \item uporabi \texttt{g++ -o ox x.cpp -std=c++11 -Wall -pedantic -Wextra}
+    \item v template dodaj
+      algorithm,
+      array,
+      complex,
+      cmath,
+      functional,
+      iostream,
+      limits,
+      map,
+      queue,
+      set,
+      stack,
+      string,
+      tuple,
+      utility,
+      vector,
+      namespace std in cin zadeve.
   \end{itemize*}}
   \vfill
   verzija: \today
@@ -398,7 +420,7 @@ koncih).
     \begin{itemize*}
       \item vstavi besedo
       \item največji skupen prefix z dano besedo
-      \item največji skupen prefix med besedami v drevesu
+      \item največji skupen prefix med besedami v drevesu (vrne ena preveč)
     \end{itemize*}
   \item[Časovna zahtevnost:] $O(w)$ za \verb|add| in \verb|common_prefix| ter
     $O(\#nodes)$ za najdaljši prefix med vsemi besedami.
