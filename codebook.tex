@@ -728,7 +728,7 @@ Funkcije:
     \end{gather*}
   \item[Kombinatorika:]
     \begin{gather*}
-      \binom{n}{k} = \sum_{i=1}^k \frac{n-i}{i} \quad \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} \\
+      \binom{n}{k} = \frac{n!}{k!(n-k)!} = \prod_{i=0}^{k-1} \frac{n-i}{i+1} = \binom{n-1}{k} + \binom{n-1}{k-1} \\
       C_n = \frac{1}{n+1}\binom{2n}{n} = \sum_{i=0}^{n-1}C_iC_{n-1-i} = \prod_{i=2}^n\frac{n+i}{i} = \frac{2(2n-1)}{n+1}C_{n-1} \\
       F_n = F_{n-1} + F_{n-2} = \begin{pmatrix} 1 & 1 \\ 0 & 1
       \end{pmatrix}^{n-1}_{11}\quad F_mF_n + F_{m-1}F_{n-1}  = F_{m+n-1} \quad
@@ -769,7 +769,8 @@ Funkcije:
        29 &   536.870.912 & 8,72 &          & 30,94 &                 &         & 514229 \\
        30 & 1.073.741.824 & 9,03 &          & 32,42 &                 &         & 832040 \\
        31 & 2.147.483.648 & 9,33 &          & 33,91 &                 &         & 1346269 \\
-       32 & 4.294.967.296 & 9,63 &          & 35,42 & Google          &         & 2178309 \\
+       32 & 4.294.967.296 & 9,63 &          & 35,42 &                 &         & 2178309 \\
+       64 &              & 19,26 &          & 89,10 & Google          &         &  \\
     \end{tabular} \\[12pt]
   \item[Pascalov trikotnik:] \mbox{} \\[12pt]
     \tabcolsep=0.03cm
