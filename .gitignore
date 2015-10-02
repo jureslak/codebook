@@ -3,3 +3,7 @@ test/*.o
 test/*.a
 implementacija/*/.ycm*
 implementacija/*/*.o
+_minted-codebook/
+*.directory
+**/old/*
+*.yet
