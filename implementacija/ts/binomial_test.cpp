@@ -1,5 +1,7 @@
 #include "binomial.h"
+
 #include "gtest/gtest.h"
+
 TEST(Binomial, Small) {
     EXPECT_EQ(1, binomial(1, 0));
     EXPECT_EQ(1, binomial(2, 0));

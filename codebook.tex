@@ -560,7 +560,7 @@ desetiški.
 \cpp{ts/extended_gcd.cpp}
 
 \subsection{Kitajski izrek o ostankih}
-\label{sec:ts:mod}
+\label{sec:ts:chinese}
 \begin{description*}
   \item[Vhod:] Sistem $n$ kongruenc $x \equiv a_i \pmod{m_i}$, $m_i$ so paroma tuji.
   \item[Izhod:] Število $x$, ki reši ta sistem dobimo po formuli
@@ -635,10 +635,10 @@ desetiški.
 \label{sec:tau}
 \begin{description*}
   \item[Vhod:] Število $n \in \N$.
-  \item[Izhod:] Število pozitivnih deliteljev $n$, $\tau(n)$. Velja da za $n =
-    p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, je \[ \tau(n) = (\alpha_1 + 1) \cdots
+  \item[Izhod:] Število pozitivnih deliteljev $n$, $\tau(n)$. Velja, da je za $n =
+    p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, \[ \tau(n) = (\alpha_1 + 1) \cdots
     (\alpha_k + 1). \]
-  \item[Časovna zahtevnost:] $O(\sqrt(n))$
+  \item[Časovna zahtevnost:] $O(\sqrt{n})$
   \item[Prostorska zahtevnost:] $O(1)$
   \item[Testiranje na terenu:] \url{https://projecteuler.net/problem=12}
 \end{description*}
@@ -654,12 +654,35 @@ desetiški.
       0 & \text{ sicer}
     \end{cases}$ \\
     Za velike vrednosti lahko izračunamo aproksimacijo s pomočjo logaritma gama
-    funkcije.
-  \item[Časovna zahtevnost:] $O(\min\{k, n-k\})$
-  \item[Prostorska zahtevnost:] $O(1)$
-  \item[Testiranje na terenu:] TODO
+    funkcije. Če rabiš isto vrednost $\binom{n}{k}$ več kot enkrat, se morda
+    splača shraniti cel Pascalov trikotnik.
+  \item[Časovna zahtevnost:] $O(\min\{k, n-k\})$ za enega, $O(n^2)$ za Pascalov
+    trikotnik.
+  \item[Prostorska zahtevnost:] $O(1)$ za enega, $O(n^2)$ za Pascalov trikotnik
+  \item[Testiranje na terenu:] TODO (upm2015/mine)
 \end{description*}
 \cpp{ts/binomial.cpp}
+
+\subsection{Binomski koeficienti po modulu}
+\label{sec:binommod}
+\begin{description*}
+  \item[Vhod:] Števili $n, k \in \Z$ in $p \in \N$, ki v praštevilskem razcepu
+    nima potenc praštevil.
+  \item[Izhod:] Ostanek pri deljenju binomskega koeficienta $\binom{n}{k}$ s
+    $p$. Če je $p$ praštevilo, lahko uporabiš \verb|binomial_modp|, sicer pa
+    \verb|binomial_mod|. Pri deljenju s praštevilom uporabimo Lucasov izrek:
+    \[ \binom{n}{k} \equiv
+      \binom{n_r}{k_r}\binom{n_{r-1}}{k_{r-1}}\cdots\binom{n_1}{k_1}\binom{n_0}{k_0},
+    \] kjer sta $n = n_r\ldots n_0$ in $k = k_r\ldots k_0$ zapisa števil $n$ in
+    $k$ v $p$-jiškem sistemu. Sicer število razcepimo na tuja si števila
+    (prafaktorje) in uporabimo skupaj z kitajskim izrekom o ostankih.
+  \item[Časovna zahtevnost:]: $O(p \cdot (\log_p(n) + \log_p(k)))$ za praštevilo $p$.
+  \item[Prostorska zahtevnost:] $O(1)$
+  \item[Potrebuje:] \nameref{sec:ts:chinese}
+    (str.~\pageref{sec:ts:chinese})
+  \item[Testiranje na terenu:] TODO (upm2015/mine)
+\end{description*}
+\cpp{ts/binomial_mod.cpp}
 
 \section{Geometrija}
 \label{sec:geom}

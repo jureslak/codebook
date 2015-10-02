@@ -7,7 +7,7 @@ int binomial(int n, int k) {
     int r = 1;
     for (int i = 0; i < k; ++i) {
         r *= n - i;
-        r /= i + 1;
+        r /= i + 1;  // deljenje se vedno izide
     }
     return r;
 }

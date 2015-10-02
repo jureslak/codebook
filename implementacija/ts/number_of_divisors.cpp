@@ -5,7 +5,7 @@ int number_of_divisors(int n) {
     int i = 2;
     while (i * i <= n) {
         int p = 0;
-        while (n % i == 0) {
+        while (n % i == 0) {  // i je prafaktor n, s potenco p
             n /= i;
             p++;
         }
