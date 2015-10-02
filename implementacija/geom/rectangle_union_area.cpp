@@ -11,7 +11,7 @@ struct vert {  // vertical sweep line element
     }
 };
 
-vector<int> points;
+vector<int> points;  // y-coordinates of rect sides (can be double)
 
 struct Node {  // segment tree
     int s, e, m, c, a;  // start, end, middle, count, area
@@ -53,13 +53,13 @@ int rectangle_union_area(const vector<pair<P, P>>& rects) {
     vector<vert> verts; verts.reserve(2*n);
     points.resize(2*n);  // vse točke čez katere napenjamo intervale (stranice)
 
-    P levo_spodaj, desno_zgoraj;  // pravokotniki so podani tako
+    P levo_spodaj, desno_zgoraj;  // pravokotniki so dani tako, ce v nalogi niso, zamenjaj x1 <-> x2
     for (int i = 0; i < n; ++i) {
         tie(levo_spodaj, desno_zgoraj) = rects[i];
-        int a = levo_spodaj.real();
-        int c = desno_zgoraj.real();
-        int b = levo_spodaj.imag();
-        int d = desno_zgoraj.imag();
+        int a = levo_spodaj.real();   //         +----------+ (c, d)
+        int c = desno_zgoraj.real();  //         |          |
+        int b = levo_spodaj.imag();   //         |          |
+        int d = desno_zgoraj.imag();  //  (a, b) +----------+
         verts.push_back(vert(a, b, d, true));
         verts.push_back(vert(c, b, d, false));
         points[2*i] = b;
@@ -73,16 +73,14 @@ int rectangle_union_area(const vector<pair<P, P>>& rects) {
     Node * sl = new Node(0, points.size());  // sweepline segment tree
 
     int area = 0, height = 0;  // area = total area. height = trenutno pokrita višina
-    int px = -(1 << 30);
+    int px = -(1 << 30);  // value smaller than smallest x coordinate
     for (int i = 0; i < 2*n; ++i) {
         area += (verts[i].x-px)*height;  // trenutno pometena area
 
-        int s = lower_bound(points.begin(), points.end(), verts[i].s)-points.begin();
-        int e = lower_bound(points.begin(), points.end(), verts[i].e)-points.begin();
-        if (verts[i].start)
-            height = sl->add(s, e);  // segment tree sprejme indexe, ne koordinat
-        else
-            height = sl->remove(s, e);
+        int s = lower_bound(points.begin(), points.end(), verts[i].s) - points.begin();
+        int e = lower_bound(points.begin(), points.end(), verts[i].e) - points.begin();
+        if (verts[i].start) height = sl->add(s, e);  // segment tree sprejme indexe, ne koordinat
+        else height = sl->remove(s, e);
         px = verts[i].x;
     }
 
