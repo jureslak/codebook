@@ -109,3 +109,13 @@ TEST(Binomial, Approx) {
     EXPECT_DOUBLE_EQ(0, binomial_approx(5, 6));
     EXPECT_DOUBLE_EQ(1, binomial_approx(6, 6));
 }
+
+TEST(Binomial, PascalTriangle) {
+    vector<vector<int>> expected = {
+        {1, 0, 0, 0, 0},
+        {1, 1, 0, 0, 0},
+        {1, 2, 1, 0, 0},
+        {1, 3, 3, 1, 0},
+        {1, 4, 6, 4, 1}};
+    EXPECT_EQ(expected, pascal_triangle(5));
+}

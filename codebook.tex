@@ -659,28 +659,33 @@ desetiški.
   \item[Časovna zahtevnost:] $O(\min\{k, n-k\})$ za enega, $O(n^2)$ za Pascalov
     trikotnik.
   \item[Prostorska zahtevnost:] $O(1)$ za enega, $O(n^2)$ za Pascalov trikotnik
-  \item[Testiranje na terenu:] TODO (upm2015/mine)
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2015/2015_3kolo/minsko_polje}
 \end{description*}
 \cpp{ts/binomial.cpp}
 
 \subsection{Binomski koeficienti po modulu}
 \label{sec:binommod}
 \begin{description*}
-  \item[Vhod:] Števili $n, k \in \Z$ in $p \in \N$, ki v praštevilskem razcepu
-    nima potenc praštevil.
+  \item[Vhod:] Števili $n, k \in \Z$ in $p \in \mathbb{P}$. Lahko posplošimo na
+    poljubno število, ki v praštevilskem razcepu nima potenc praštevil.
   \item[Izhod:] Ostanek pri deljenju binomskega koeficienta $\binom{n}{k}$ s
     $p$. Če je $p$ praštevilo, lahko uporabiš \verb|binomial_modp|, sicer pa
     \verb|binomial_mod|. Pri deljenju s praštevilom uporabimo Lucasov izrek:
     \[ \binom{n}{k} \equiv
       \binom{n_r}{k_r}\binom{n_{r-1}}{k_{r-1}}\cdots\binom{n_1}{k_1}\binom{n_0}{k_0},
     \] kjer sta $n = n_r\ldots n_0$ in $k = k_r\ldots k_0$ zapisa števil $n$ in
-    $k$ v $p$-jiškem sistemu. Sicer število razcepimo na tuja si števila
-    (prafaktorje) in uporabimo skupaj z kitajskim izrekom o ostankih.
+    $k$ v $p$-jiškem sistemu.
+
+    Sicer število razcepimo na tuja si števila
+    (prafaktorje) in uporabimo skupaj za vsako praštevilo posebej zgornji
+    postopek, nato pa združimo s kitajskim izrekom o ostankih.
   \item[Časovna zahtevnost:]: $O(p \cdot (\log_p(n) + \log_p(k)))$ za praštevilo $p$.
   \item[Prostorska zahtevnost:] $O(1)$
   \item[Potrebuje:] \nameref{sec:ts:chinese}
     (str.~\pageref{sec:ts:chinese})
-  \item[Testiranje na terenu:] TODO (upm2015/mine)
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2015/2015_3kolo/minsko_polje}
 \end{description*}
 \cpp{ts/binomial_mod.cpp}
 

@@ -14,4 +14,19 @@ TEST(Binomial, Modp) {
     }
 }
 
-// TODO(jureslak) test non prime
+TEST(Binomial, Mod) {
+    for (int i = 5; i < 30; i += 4) {
+        for (int j = 5; j <= i; j += 4) {
+            for (int m : {6, 15, 35, 70, 770}) {
+                ASSERT_EQ(binomial(i, j) % m, binomial_mod(i, j, m))
+                    << "i: " << i << " j: " << j << " m: " << m << " bin: " << binomial(i, j);
+            }
+        }
+    }
+}
+
+TEST(Binomial, Death) {
+    ::testing::FLAGS_gtest_death_test_style = "threadsafe";
+    EXPECT_DEATH(binomial_mod(8, 4, 4),
+                 "Invalid number, numbers containing prime powers not supported.");
+}
