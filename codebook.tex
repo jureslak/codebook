@@ -94,6 +94,7 @@
       cmath,
       functional,
       iostream,
+      iomanip,
       limits,
       map,
       queue,
@@ -104,6 +105,8 @@
       utility,
       vector,
       namespace std in cin zadeve.
+      \item Za izpis na fiksno število decimalk uporabi  \\ \texttt{cout
+          \mbox{<}< fixed \mbox{<}< setprecision(6);}
   \end{itemize*}}
   \vfill
   verzija: \today
@@ -529,6 +532,25 @@ desetiški.
     \url{http://putka.upm.si/tasks/test_okolja/sestevanje}
 \end{description*}
 \hpp{algo/bigint.h}
+
+\subsection{2-SAT}
+\label{sec:2sat}
+\begin{description*}
+  \item[Vhod:] Formula $\varphi(x_1, \ldots, x_n)$ v 2-CNF obliki, torej
+    \[ \varphi = S_1 \land \cdots \land S_n, \quad S_i = L_{i1} \lor L_{i2},
+      \quad L_{ij} \in \{x_1, \ldots, x_n, \neg x_1, \ldots, \neg x_n\}. \]
+      Za naše namene je predstavljena kot seznam parov števil od $\pm1$ do $\pm
+      n$, kjer pozitivna število $i$ pomeni literal $x_i$, negativno število
+      $-i$ pa literal $\neg x_i$. Na primer, \[ [(-2, 3), (4, 5), (-3, -1)] \] predstavlja
+      formulo \[ (\neg x_2 \lor x_3) \land (x_4 \lor x_5) \land (\neg x_3 \lor
+      \neg x_1). \]
+  \item[Izhod:] Nabor $n$ vrednosti za $x_i$, pri katerih je formula resnična.
+    Če tak nabor ne obstaja, vrne $(-1, \ldots, -1)$.
+  \item[Časovna zahtevnost:] $O(V+E)$
+  \item[Prostorska zahtevnost:] $O(V+E)$
+  \item[Testiranje na terenu:] Uva 11294
+\end{description*}
+\cpp{algo/2sat.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
