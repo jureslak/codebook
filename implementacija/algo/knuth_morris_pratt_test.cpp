@@ -2,13 +2,13 @@
 
 #include "gtest/gtest.h"
 
-TEST(KMP, failure_function) {
+TEST(KMP, FailureFunction) {
     vector<int> expected = {0, 0, 0, 0, 1, 2, 0 };
     vector<int> result = compute_failure_function("ABCDABD");
     EXPECT_EQ(expected, result);
 }
 
-TEST(KMP, match) {
+TEST(KMP, Match) {
     int i;
     i = knuth_morris_pratt("ABCD", "BC");
     EXPECT_EQ(1, i);
@@ -33,7 +33,7 @@ TEST(KMP, match) {
     i = knuth_morris_pratt("ABA", "BB");
     EXPECT_EQ(-1, i);
 }
-TEST(KMP, match_start) {
+TEST(KMP, MatchStart) {
     int i;
     string p = "ABC", s = "ABCABCABCABC";
     vector<int> ff = compute_failure_function(p);
@@ -67,20 +67,20 @@ TEST(KMP, match_start) {
     EXPECT_EQ(-1, i);
 }
 
-TEST(KMP, find_all_occurences) {
+TEST(KMP, FindAllOccurences) {
     string p = "ABA", s = "ABABABABA";
     vector<int> a = find_all_occurences(s, p);
     vector<int> expected = {0, 2, 4, 6};
     EXPECT_EQ(expected, a);
 }
 
-TEST(KMP, find_non_overlaping_occurences) {
+TEST(KMP, FindNonOverlapingOccurences) {
     string p = "ABA", s = "ABABABABA";
     vector<int> a = find_non_overlaping_occurences(s, p);
     vector<int> expected = {0, 4};
     EXPECT_EQ(expected, a);
 }
-TEST(KMP, minimal_period) {
+TEST(KMP, MinimalPeriod) {
     EXPECT_EQ(1, minimal_period("A"));
     EXPECT_EQ(1, minimal_period("AA"));
     EXPECT_EQ(1, minimal_period("AAAAAAAAAAAA"));

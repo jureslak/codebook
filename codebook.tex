@@ -580,12 +580,56 @@ desetiški.
 \end{description*}
 \cpp{algo/knuth_morris_pratt.cpp}
 
+\subsection{\textit{z}-funkcija}
+\label{sec:zf}
+\begin{description*}
+  \item[Vhod:] Niz znakov $s$ dolžine $n$.
+  \item[Izhod:] $z$-funkcija niza. Vrednost $z[i]$ pove največji skupni prefix
+    med $s$ in $s[i\!:]$. \\ Primer: za $s = ``aaaaa$`` je $z = [0,4,3,2,1]$, za $s
+    = ``aaabaab$'' je $z = [0,2,1,0,2,1,0]$, za $s = ``abacaba$'' je $z =
+    [0,0,1,0,3,0,1]$.
+  \item[Časovna zahtevnost:] $O(n)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] TODO
+\end{description*}
+\cpp{algo/z_function.cpp}
+
+\subsection{Minimalna perioda niza}
+\label{sec:minperiod}
+\begin{description*}
+  \item[Vhod:] Niz znakov $s$ dolžine $n$.
+  \item[Izhod:] Dolžina minimalne periode $s$, tj.~tak $k$, da je $(s[\colon
+   \! k])^{\frac{n}{k}} = s$. \\ Primer: minimalna perioda $s = ``abcabcabc$'' je
+   ``$abc$'', dolžine 3.
+  \item[Časovna zahtevnost:] $O(n)$
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:] TODO
+  \item[Implementacija:] Glej \nameref{sec:zf}, str.~\pageref{sec:zf} ali
+    \nameref{sec:kmp}, str.~\pageref{sec:kmp}.
+\end{description*}
+
+\section{Numerika}
+\label{sec:numerika}
+\subsection{Gaussova eliminacija -- UNTESTED}
+\begin{description*}
+  \item[Vhod:] Matrika $A' = [A \ b]$, ki predstavlja $m\times n$ sistem $Ax = b$.
+  \item[Izhod:] Število rešitev: 0, 1, ali $\infty$ ter v primeru, da rešitev
+    obstaja, tudi $x$ (dolg $n$), ki reši sistem. Enačbo rešimo z $LU$ razcepom z delnim
+    pivotiranjem.
+  \item[Časovna zahtevnost:] $O(n^3)$
+  \item[Prostorska zahtevnost:] $O(n^2)$
+  \item[Testiranje na terenu:] TODO
+\end{description*}
+\cpp{num/gauss.cpp}
+
+\subsection{Bisekcija} TODO
+\subsection{Tangentna metoda} TODO
+
 \section{Teorija števil}
 \label{sec:ts}
 
 \subsection{Evklidov algoritem}
 \label{sec:ts:evk}
-
 \begin{description*}
   \item[Vhod:] $a, b \in \Z$
   \item[Izhod:] Največji skupni delitelj $a$ in $b$. Za pozitivna števila je

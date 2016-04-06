@@ -1,7 +1,7 @@
 #include "knuth_morris_pratt.h"
 
 vector<int> compute_failure_function(const string& p) {
-	int m = p.size();
+    int m = p.size();
     vector<int> ff(m, 0);
     for (int k = 0, i = 1; i < m; ++i) {
         while (k > 0 && p[i] != p[k]) k = ff[k-1];
