@@ -82,6 +82,7 @@
     \item podrobno in pozorno preberi navodila
     \item pazi na \texttt{double} in \ull
     \item počisti podatke med testnimi primeri
+    \item uporabi \texttt{vector.assign} ne \texttt{vector.resize} med primeri
     \item uporabi \texttt{cin.sync\_with\_stdio(false);}\\
       \texttt{cin.tie(nullptr);} in nikoli \texttt{endl} za hitrejši IO
     \item uporabi \texttt{numeric\_limits<tip>::max()} \\ ali \texttt{infinity()},
@@ -276,7 +277,7 @@
   \item[Časovna zahtevnost:] $O(\log(n))$ na query, s $O(n\log(n))$
     predprocesiranja.
   \item[Prostorska zahtevnost:] $O(n\log(n))$
-  \item[Testiranje na terenu:] \url{http://www.spoj.com/submit/LCA/}
+  \item[Testiranje na terenu:] \url{http://www.spoj.com/problems/LCA/}
 \end{description*}
 \cpp{grafi/lowest_common_ancestor.cpp}
 
