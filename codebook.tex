@@ -66,6 +66,9 @@
 \newcommand{\cpp}[1]{\cppsource{implementacija/#1}}
 \newcommand{\hpp}[1]{\cppheadersource{implementacija/#1}}
 \newcommand{\ull}{\texttt{unsigned long long}}
+\newcommand{\lslice}[2]{\ensuremath{#1[:\! #2]}}
+\newcommand{\rslice}[2]{\ensuremath{#1[#2 \!:]}}
+\newcommand{\slice}[3]{\ensuremath{#1[#2 \!:\! #3]}}
 
 \begin{document}
 
@@ -395,7 +398,7 @@ koncih).
 \end{description*}
 \cpp{ps/fenwick_tree.cpp}
 
-\subsection{Fenwickovo drevo ($\mathbf n$-dim)}
+\subsection{Fenwickovo drevo (\textit{n}-dim)}
 \label{sec:fenwick-nd}
 \begin{description*}
   \item[Operacije:] Imamo $n$-dim tabelo dimenzij $d_1 \times d_2 \times
@@ -409,7 +412,7 @@ koncih).
       \item preberi vsoto na podkvadru (pravilo vključitev in izključitev)
     \end{itemize*}
     Funkcije so napisane za 3D, samo dodaj ali odstrani for zanke za višje /
-    nižje dimenzije in na ne kockasto tabelo.
+    nižje dimenzije in spremeni $n$ za ne kockasto tabelo.
   \item[Časovna zahtevnost:] kumulativna vsota in update $O(\log(d_1 + \dots +
     d_n))$, za vsoto podkvadra $O(2^d\log(d_1+\dots+d_n))$.
   \item[Prostorska zahtevnost:] $O(d_1\cdots d_n)$
@@ -420,15 +423,19 @@ koncih).
 \subsection{Trie}
 \label{sec:trie}
 \begin{description*}
-  \item[Operacije:] Prefix tree, hranimo besede, crko po crko na nivoju.
+  \item[Operacije:] Prefix tree, hranimo besede, črko po črko na nivoju, ćrke so
+    iz neke končne abecede $\Sigma$, pri implementaciji $\Sigma = \{a, \dots,
+    z\}$.
     \begin{itemize*}
       \item vstavi besedo
       \item največji skupen prefix z dano besedo
       \item največji skupen prefix med besedami v drevesu (vrne ena preveč)
     \end{itemize*}
-  \item[Časovna zahtevnost:] $O(w)$ za \verb|add| in \verb|common_prefix| ter
-    $O(\#nodes)$ za najdaljši prefix med vsemi besedami.
-  \item[Prostorska zahtevnost:] $O(n w)$, kjer je $n$ število besed, v praksi
+  \item[Časovna zahtevnost:] $O(\ell)$ za \verb|add| in \verb|common_prefix|, ki
+    tju uporabimo na besedi dolžine $\ell$ ter
+    $O(|T|)$ za najdaljši prefix med vsemi besedami, kjer je $|T|$ število
+    vozlišč v drevesu.
+  \item[Prostorska zahtevnost:] $O(|T|) = O(n |\Sigma|)$, kjer je $n$ število besed, v praksi
     manj, ker se prekrivajo.
   \item[Testiranje na terenu:] \url{http://www.spoj.com/problems/PRHYME/} TODO
 \end{description*}
@@ -442,7 +449,7 @@ koncih).
 \begin{description*}
   \item[Vhod:] Dve zaporedji $a$ in $b$ dolžin $n$ in $m$.
   \item[Izhod:] Najdaljše skupno podzaporedje (ne nujno strnjeno) $LCS$. Lahko dobimo
-    samo njegovo dolžino. Problem je povezan z najkrajšim skupnim nadzaporedjem
+    tudi samo njegovo dolžino. Problem je povezan z najkrajšim skupnim nadzaporedjem
     ($SCS$). Velja $SCS + LCS = n + m$.
   \item[Časovna zahtevnost:] $O(nm)$
   \item[Prostorska zahtevnost:] $O(nm)$ za podzaporedje, $O(m)$ za dolžino.
@@ -498,7 +505,7 @@ koncih).
 \label{sec:min-rotation}
 \begin{description*}
   \item[Vhod:] Niz znakov $s$ dolžine $n$.
-  \item[Izhod:] Indeks $i$, tako da je string $s[i:] + s[:i]$ leksikografsko
+  \item[Izhod:] Indeks $i$, tako da je string $\rslice{s}{i} + \lslice{s}{i}$ leksikografsko
     najmanjši, izmed vseh možnih rotacij $s$.
   \item[Časovna zahtevnost:] $O(n)$
   \item[Prostorska zahtevnost:] $O(n)$
@@ -560,13 +567,13 @@ desetiški.
     lahko izračunamo tudi failure function ali podamo indeks, da išče po nizu
     samo od nekje naprej.
   \item[Izhod:] Najmanjši indeks $0 \leq i < n$, tako da se v $s$ na mestih
-    $s[i:i+m]$ nahaja $p$. Če tak indeks ne obstaja vrne $-1$. Program torej
+    $\slice{s}{i}{i+m}$ nahaja $p$. Če tak indeks ne obstaja vrne $-1$. Program torej
     najde prvo pojavitev $p$ v $s$. Hkrati izračuna tudi
     \emph{failure\_function} \texttt{ff}, ki pove nekaj o samopodobnosti niza.
     Vrednost $\texttt{ff}[i-1]$ pove indeks naslednje črke, ki jo moramo
     preveriti, če vemo, da smo na $i$-tem znaku ravno failali match podniza.
-    Drugače, to je dolžina največjega pravega podniza $p[:i+1]$,
-    ki je hkrati prefix in suffix za niz $p[:i+1]$. Primer:
+    Drugače, to je dolžina največjega pravega podniza $\lslice{p}{i+1}$,
+    ki je hkrati prefix in suffix za niz $\lslice{p}{i+1}$. Primer:
     \begin{center}
     \begin{tabular}[h]{|c||*{7}{c|}} \hline
       $p$ & A & B & C & D & A & B & D \\ \hline
@@ -585,7 +592,7 @@ desetiški.
 \begin{description*}
   \item[Vhod:] Niz znakov $s$ dolžine $n$.
   \item[Izhod:] $z$-funkcija niza. Vrednost $z[i]$ pove največji skupni prefix
-    med $s$ in $s[i\!:]$. \\ Primer: za $s = ``aaaaa$`` je $z = [0,4,3,2,1]$, za $s
+    med $s$ in $\rslice{s}{i}$. \\ Primer: za $s = ``aaaaa$`` je $z = [0,4,3,2,1]$, za $s
     = ``aaabaab$'' je $z = [0,2,1,0,2,1,0]$, za $s = ``abacaba$'' je $z =
     [0,0,1,0,3,0,1]$.
   \item[Časovna zahtevnost:] $O(n)$
@@ -598,9 +605,9 @@ desetiški.
 \label{sec:minperiod}
 \begin{description*}
   \item[Vhod:] Niz znakov $s$ dolžine $n$.
-  \item[Izhod:] Dolžina minimalne periode $s$, tj.~tak $k$, da je $(s[\colon
-   \! k])^{\frac{n}{k}} = s$. \\ Primer: minimalna perioda $s = ``abcabcabc$'' je
-   ``$abc$'', dolžine 3.
+  \item[Izhod:] Dolžina minimalne periode $s$, tj.~tak $k$, da je
+  $(\lslice{s}{k}])^{\frac{n}{k}} = s$. \\ Primer: minimalna perioda $s =
+  ``abcabcabc$'' je ``$abc$'', dolžine 3.
   \item[Časovna zahtevnost:] $O(n)$
   \item[Prostorska zahtevnost:] $O(n)$
   \item[Testiranje na terenu:] TODO
