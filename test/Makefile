@@ -78,5 +78,6 @@ OBJ = $(SRC:%.cpp=%.o)
 tests : $(SRC) $(HDR) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(SRC)
 
-run_tests : $(OBJ) gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ # && rm -f $(OBJ)
+run_tests : $(OBJ) gtest_main.a gtest.a
+#  	rm $(OBJ)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ -lgtest_main -lgtest -lpthread
