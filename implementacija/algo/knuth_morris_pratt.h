@@ -12,5 +12,7 @@ int knuth_morris_pratt(const string& s, const string& p, const vector<int>& ff, 
 int knuth_morris_pratt(const string& s, const string& p);
 vector<int> find_all_occurences(const string& s, const string & p);
 vector<int> find_non_overlaping_occurences(const string& s, const string & p);
+int minimal_period(const string& s);
+
 
 #endif  // IMPLEMENTACIJA_ALGO_KNUTH_MORRIS_PRATT_H_

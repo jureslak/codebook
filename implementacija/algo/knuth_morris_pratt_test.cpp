@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 
 TEST(KMP, failure_function) {
-    vector<int> expected = {-1, -1, -1, -1, 0, 1, -1};
+    vector<int> expected = {0, 0, 0, 0, 1, 2, 0 };
     vector<int> result = compute_failure_function("ABCDABD");
     EXPECT_EQ(expected, result);
 }
@@ -79,4 +79,13 @@ TEST(KMP, find_non_overlaping_occurences) {
     vector<int> a = find_non_overlaping_occurences(s, p);
     vector<int> expected = {0, 4};
     EXPECT_EQ(expected, a);
+}
+TEST(KMP, minimal_period) {
+    EXPECT_EQ(1, minimal_period("A"));
+    EXPECT_EQ(1, minimal_period("AA"));
+    EXPECT_EQ(1, minimal_period("AAAAAAAAAAAA"));
+    EXPECT_EQ(2, minimal_period("ABABABABABAB"));
+    EXPECT_EQ(11, minimal_period("ABABABABABA"));
+    EXPECT_EQ(3, minimal_period("ABCABCABC"));
+    EXPECT_EQ(8, minimal_period("ABCABCAB"));
 }

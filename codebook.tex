@@ -563,14 +563,15 @@ desetiški.
     $s[i:i+m]$ nahaja $p$. Če tak indeks ne obstaja vrne $-1$. Program torej
     najde prvo pojavitev $p$ v $s$. Hkrati izračuna tudi
     \emph{failure\_function} \texttt{ff}, ki pove nekaj o samopodobnosti niza.
-    Vrednost $\texttt{ff}[i]$ pove indeks naslednje črke, ki jo moramo
-    preveriti, če vemo, da smo do $i$-tega znaka uspešno matchali podniz.
-    Drugače, to je za ena zmanjšana dolžina največjega pravega podniza $p[:i+1]$,
+    Vrednost $\texttt{ff}[i-1]$ pove indeks naslednje črke, ki jo moramo
+    preveriti, če vemo, da smo na $i$-tem znaku ravno failali match podniza.
+    Drugače, to je dolžina največjega pravega podniza $p[:i+1]$,
     ki je hkrati prefix in suffix za niz $p[:i+1]$. Primer:
     \begin{center}
     \begin{tabular}[h]{|c||*{7}{c|}} \hline
       $p$ & A & B & C & D & A & B & D \\ \hline
-      \texttt{ff} & -1 & -1 & -1 & -1 & 0 & 1 & -1 \\ \hline
+      $i$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+      \texttt{ff} & 0 & 0 & 0 & 0 & 1 & 2 & 0 \\ \hline
     \end{tabular}
     \end{center}
   \item[Časovna zahtevnost:] $O(n+m)$
