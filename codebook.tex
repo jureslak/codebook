@@ -553,6 +553,32 @@ desetiški.
 \end{description*}
 \cpp{algo/2sat.cpp}
 
+\subsection{Knuth-Morris-Pratt}
+\label{sec:kmp}
+\begin{description*}
+  \item[Vhod:] Niz znakov $s$ dolžine $n$ in niz znakov $p$ dolžine $m$. Posebej
+    lahko izračunamo tudi failure function ali podamo indeks, da išče po nizu
+    samo od nekje naprej.
+  \item[Izhod:] Najmanjši indeks $0 \leq i < n$, tako da se v $s$ na mestih
+    $s[i:i+m]$ nahaja $p$. Če tak indeks ne obstaja vrne $-1$. Program torej
+    najde prvo pojavitev $p$ v $s$. Hkrati izračuna tudi
+    \emph{failure\_function} \texttt{ff}, ki pove nekaj o samopodobnosti niza.
+    Vrednost $\texttt{ff}[i]$ pove indeks naslednje črke, ki jo moramo
+    preveriti, če vemo, da smo do $i$-tega znaka uspešno matchali podniz.
+    Drugače, to je za ena zmanjšana dolžina največjega pravega podniza $p[:i+1]$,
+    ki je hkrati prefix in suffix za niz $p[:i+1]$. Primer:
+    \begin{center}
+    \begin{tabular}[h]{|c||*{7}{c|}} \hline
+      $p$ & A & B & C & D & A & B & D \\ \hline
+      \texttt{ff} & -1 & -1 & -1 & -1 & 0 & 1 & -1 \\ \hline
+    \end{tabular}
+    \end{center}
+  \item[Časovna zahtevnost:] $O(n+m)$
+  \item[Prostorska zahtevnost:] $O(m)$
+  \item[Testiranje na terenu:] \url{http://www.spoj.com/problems/NHAY/}
+\end{description*}
+\cpp{algo/knuth_morris_pratt.cpp}
+
 \section{Teorija števil}
 \label{sec:ts}
 
