@@ -34,7 +34,7 @@ int edmonds_karp_maximal_flow(const vector<vector<int>>& capacity, int s, int t)
         if (prev[t] == -2) break;
 
         maxflow += bot;
-        for (int u = t; u != s; u = prev[u]) {  // popravimo tretnurni flow nazaj po poti
+        for (int u = t; u != s; u = prev[u]) {  // popravimo trenutni flow nazaj po poti
             flow[u][prev[u]] -= bot;
             flow[prev[u]][u] += bot;
         }
