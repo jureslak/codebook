@@ -287,19 +287,48 @@
 \subsection{Največji pretok in najmanjši prerez}
 \label{sec:maxflow}
 
+Če imamo omrežje s dopustnimi kapacitetami na povezavah, potem max flow pove,
+koliko največ lahko teže skozi od sourca $s$ do sinka $t$. Min cut je najmanjša
+vsota tež povezav, ki jih moramo odstraniti, da se $s$ in $t$ popolnoma ločita.
+Ti dve vrednosti sta enaki.
+
+\subsubsection{Ford-Fulkerson}
+\label{sec:maxflow-ff}
+\begin{description*}
+  \item[Vhod:] Matrika kapacitet dimenzij $n\times n$ (tj.~matrika sosednosti
+    grafa z $n$ vozlišči, kjer so vrednosti dopustni pretoki povezav). Vse
+    kapacitete morajo biti nenegativne. Hitrejša (in dajlša) verzija tega
+    algoritma je Edmonds-Karpov algoritem.
+  \item[Izhod:] Vrne maksimalen pretok od $s$ do $t$, ki je po vrednosti enak
+    minimalnemu prerezu. Konstruira tudi matriko pretoka. Če pot od $s$ do $t$
+    sploh ne obstaja vrne 0.
+  \item[Časovna zahtevnost:] $O(Ef)$
+  \item[Prostorska zahtevnost:] $O(V^2)$
+  \item[Testiranje na terenu:]
+    \href{http://putka.upm.si/tasks/2016/2016_3kolo/deske}{UPM 2016, 3.~kolo deske}
+\end{description*}
+\cpp{grafi/ford_fulkerson_maximal_flow.cpp}
+
 \subsubsection{Edmonds-Karp}
 \label{sec:maxflow-edmonds-karp}
 \begin{description*}
-  \item[Vhod:] Matrika kapacitet, vse morajo biti nenegativne.
-  \item[Izhod:] Vrne maksimalen pretok, ki je enak minimalnemu prerezu.
-    Konstruira tudi matriko pretoka.
+  \item[Vhod:] Matrika kapacitet dimenzij $n\times n$ (tj.~matrika sosednosti
+    grafa z $n$ vozlišči, kjer so vrednosti dopustni pretoki povezav). Graf je
+    lahko (in ponavadi tudi je) usmerjen. Vse kapacitete morajo biti
+    nenegativne.
+  \item[Izhod:] Vrne maksimalen pretok od $s$ do $t$.
+    Konstruira tudi matriko pretoka. Če pot od $s$ do $t$
+    sploh ne obstaja vrne 0.
   \item[Časovna zahtevnost:] $O(V E^2)$
   \item[Prostorska zahtevnost:] $O(V^2)$
-  \item[Testiranje na terenu:] UVa 820
+  \item[Testiranje na terenu:] UVa 820,
+    \href{http://putka.upm.si/tasks/2016/2016_3kolo/deske}{UPM 2016, 3.~kolo deske}
 \end{description*}
 \cpp{grafi/edmonds_karp_maximal_flow.cpp}
 
 \subsection{Največje prirejanje in najmanjše pokritje}
+
+\subsubsection{Največje prirejanje v neuteženih dvodelnih grafih}
 \label{sec:mbm}
 V angleščini: \emph{maximum cardinality bipartite matching} (če bi dodali še
 kakšno povezavo bi se dve stikali) in \emph{minimum vertex cover} (če bi vzeli
@@ -308,7 +337,7 @@ koncih).
 \begin{description*}
   \item[Vhod:] Dvodelen neutežen graf, dan s seznamom sosedov. Prvih \texttt{left} vozlišč je na
     levi strani.
-  \item[Izhod:] Število povezav v $MCBM$ = število točk v $MVC$, prvi $MVC$ vrne tudi neko minimalno
+  \item[Izhod:] Število povezav v $MCBM$ = število točk v $MVC$, pri $MVC$ vrne tudi neko minimalno
     pokritje. Velja tudi $MIS = V - MCBM$, $MIS$ pomeni \emph{maximum
     independent set}.
   \item[Časovna zahtevnost:] $O(VE)$
@@ -606,7 +635,7 @@ desetiški.
 \begin{description*}
   \item[Vhod:] Niz znakov $s$ dolžine $n$.
   \item[Izhod:] Dolžina minimalne periode $s$, tj.~tak $k$, da je
-  $(\lslice{s}{k}])^{\frac{n}{k}} = s$. \\ Primer: minimalna perioda $s =
+  $(\lslice{s}{k})^{\frac{n}{k}} = s$. \\ Primer: minimalna perioda $s =
   ``abcabcabc$'' je ``$abc$'', dolžine 3.
   \item[Časovna zahtevnost:] $O(n)$
   \item[Prostorska zahtevnost:] $O(n)$
