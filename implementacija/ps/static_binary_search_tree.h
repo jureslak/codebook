@@ -4,7 +4,7 @@
 #include "static_binary_search_tree_util.h"
 
 struct BST {
-    int depth, n; // 1 << depth mora biti >= številu možnih elementov
+    int depth, n;  // 1 << depth mora biti >= številu možnih elementov
     vector<int> tree;  // number of elements in the tree = tree[0]
 
     BST(int d) : depth(d), n(1 << d), tree(2*n, 0) {}
