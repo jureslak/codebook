@@ -13,7 +13,7 @@ struct vert {  // vertical sweep line element
 
 vector<int> points;  // y-coordinates of rect sides (can be double)
 
-struct Node {  // segment tree
+struct Node {  // segment tree, s in e sta zacetek in konec intervala, torej en node pokrije [s, e]
     int s, e, m, c, a;  // start, end, middle, count, area
     Node *left, *right;
     Node(int s_, int e_) : s(s_), e(e_), m((s+e)/2), c(0), a(0), left(nullptr), right(nullptr) {
@@ -70,7 +70,7 @@ int rectangle_union_area(const vector<pair<P, P>>& rects) {
     sort(points.begin(), points.end());
     points.resize(unique(points.begin(), points.end())-points.begin());  // zbrišemo enake
 
-    Node * sl = new Node(0, points.size());  // sweepline segment tree
+    Node * sl = new Node(0, points.size() - 1);  // sweepline segment tree, po celem seznamu
 
     int area = 0, height = 0;  // area = total area. height = trenutno pokrita višina
     int px = -(1 << 30);  // value smaller than smallest x coordinate
