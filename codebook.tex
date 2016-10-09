@@ -366,6 +366,26 @@ koncih).
 \end{description*}
 \hpp{ps/static_binary_search_tree.h}
 
+\subsection{Statično drevo segmentov}
+\label{sec:static-segment-tree}
+    Stuktura za delat poizvedbe o neki statistiki na podseznamih nekega seznama.
+    Spodaj je implementacija za minimum, toda \texttt{min} in \texttt{inf} se
+    lahko zamenjata s poljubno asociativno operacijo. Implementacija je
+    iterativna in zato hitrejša kot tista spodaj.
+\begin{description*}
+  \item[Operacije:]
+    \begin{itemize*}
+      \item zgradi: naredi strukturo iz seznama
+      \item spremeni: nastavi element na indeksu $i$ na vrednost $v$
+      \item išči: vrne statistiko podseznama $[a, b)$. Pozor, polodprto!
+    \end{itemize*}
+  \item[Časovna zahtevnost:] $O(\log(n))$ na operacijo
+  \item[Prostorska zahtevnost:] $O(n)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2016/2016_3kolo/maxer}
+\end{description*}
+\hpp{ps/static_segment_tree.h}
+
 \subsection{Drevo segmentov}
 \label{sec:segment-tree}
 \begin{description*}
@@ -373,7 +393,7 @@ koncih).
     node-ov. Ob ustvarjanju roota povemo razpon vstavljanja, končne točke so
     postavljene po celih številih.
 
-    Za remove, ki ne zagotavlja nujno, da obstajajo stvari ki jih
+    Za remove, ki ne zagotavlja nujno, da obstajajo stvari, ki jih
     brišemo, se je treba malo bolj potruditi. Najprej odstranimo vse na
     trenutnem levelu, kolikor lahko, nato pa se v vsakem primeru pokličemo
     dalje (če je še kaj za odstranit in node-i obstajajo). Prav tako lahko
@@ -644,6 +664,17 @@ desetiški.
     \nameref{sec:kmp}, str.~\pageref{sec:kmp}.
 \end{description*}
 
+\subsection{Minimalni element v podseznamu}
+Po angleško RMQ ali Range Minimum Query. Želimo odgovarjati na poizvedbe v
+seznam dolžine $n$ oblike: ``Koliko je minimum med $a$ in $b$.''
+Če se elementi seznama spreminjajo, potem je najboljša uporaba statičnega
+drevesa segmentov~\ref{sec:static-segment-tree}. Če pa imamo dan seznam vnaprej,
+potem si lahko zgradimo strukturo, kjer za vsak indeks $i$ vemo odgovor na
+vprašanje ``Koliko je minimum na intervalu $[i, i+2^j]$ za vse $j$, da je
+interval še v seznamu. Tako lahko query $[a, b]$ odgovorimo v konstantnem času
+tako, da najdemo največji $r$, da je $a+2^r \leq b$ in primerjamo minimuma na
+$[a, a+2^r]$, $[b-2^r, b]$, ki sta oba poračunana vnaprej.
+
 \section{Numerika}
 \label{sec:numerika}
 \subsection{Gaussova eliminacija -- UNTESTED}
@@ -656,7 +687,7 @@ desetiški.
   \item[Prostorska zahtevnost:] $O(n^2)$
   \item[Testiranje na terenu:] TODO
 \end{description*}
-\cpp{num/gauss.cpp}
+\cpp{num/gauss.cpp.yet}
 
 \subsection{Bisekcija} TODO
 \subsection{Tangentna metoda} TODO
