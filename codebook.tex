@@ -284,6 +284,20 @@
 \end{description*}
 \cpp{grafi/lowest_common_ancestor.cpp}
 
+\subsection{Najširša pot med med vsemi pari vozlišč}
+\label{sec:all-pairs-widest-path}
+\begin{description*}
+  \item[Vhod:] Utežen usmerjen graf $G$ z $n$ vozlišči.
+  \item[Izhod:] $n\times n$ matrika, ki za vsak par vozlišč pove, koliko je
+    širok najožji del najširše poti med tema vozliščema; ie. za vsak par vozlišč
+    pove, kako širok je bottleneck med njima.
+  \item[Časovna zahtevnost:] $O(EV)$
+  \item[Prostorska zahtevnost:] $O(V+E)$
+  \item[Testiranje na terenu:]
+    \url{http://putka.upm.si/tasks/2016/2016_1kolo/bottleneck}
+\end{description*}
+\cpp{grafi/all_pairs_widest_path.cpp}
+
 \subsection{Največji pretok in najmanjši prerez}
 \label{sec:maxflow}
 
