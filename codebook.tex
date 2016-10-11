@@ -604,6 +604,23 @@ desetiški.
 \end{description*}
 \hpp{algo/bigint.h}
 
+\subsection{Hitro množenje s hitro Fourierofo transformacijo}
+Vse je hitro!
+\begin{description*}
+  \item[Vhod:] Dve dolgi števili ali polinoma zapisana v seznamu. Števila in polinomi so
+    zapisani v svoji bazi obrnjeni okrog, tj.
+    \begin{align*}
+      23681 &= [1, 8, 6, 3, 2] \\
+      2x^3 + 5x + 1 &= [1, 5, 0, 2]
+    \end{align*}
+  \item[Izhod:] Produkt zapisan v enaki obliki brez vodilnih ničel. Za zelo dolge sezname je lahko
+    algoritem nenatančen.
+  \item[Časovna zahtevnost:] $O(n \log n)$
+  \item[Prostorska zahtevnost:] $O(n\log n)$
+  \item[Testiranje na terenu:] TODO
+\end{description*}
+\cpp{algo/fast_fourier_transform.cpp}
+
 \subsection{2-SAT}
 \label{sec:2sat}
 \begin{description*}
