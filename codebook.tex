@@ -703,9 +703,31 @@ $[a, a+2^r]$, $[b-2^r, b]$, ki sta oba poračunana vnaprej.
     zamenjati z inverzi.
   \item[Časovna zahtevnost:] $O(\min\{n, m\}nm)$
   \item[Prostorska zahtevnost:] $O(nm)$
-  \item[Testiranje na terenu:] TODO
 \end{description*}
 \cpp{num/gauss.cpp}
+
+\subsection{Tangentna metoda}
+\begin{description*}
+  \item[Vhod:] Funkciji $f$ in $f'$ ter približek za ničlo $x_0$.
+  \item[Izhod:] Približek $x_n$ po $n$ korakih metode $x_{i+1} = x_i -
+    \frac{f(x_i)}{f'(x_i)}$ ali ko je zaporedni premik manjši od $\varepsilon$.
+  \item[Časovna zahtevnost:] Konvergenca je kvadratična, torej
+    $O(\log\frac{1}{\sqrt{\varepsilon}})$.
+  \item[Prostorska zahtevnost:] $O(1)$
+\end{description*}
+\cpp{num/tangent_method.cpp}
+
+\subsection{Bisekcija}
+\begin{description*}
+  \item[Vhod:] Funkcija $f$ in krajišči intervala $[a, b]$ na katerem leži
+    ničla in ima funkcija v krajiščih različen predznak.
+  \item[Izhod:] Približek za ničlo, ko je širina intervala enaka $\varepsilon|b-a|$ ali
+    približek po $n$ korakih.
+  \item[Časovna zahtevnost:] Konvergenca je linearna, torej
+    $O(\log\frac{1}{\varepsilon})$.
+  \item[Prostorska zahtevnost:] $O(1)$
+\end{description*}
+\cpp{num/bisection.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
