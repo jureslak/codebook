@@ -691,20 +691,21 @@ $[a, a+2^r]$, $[b-2^r, b]$, ki sta oba poračunana vnaprej.
 
 \section{Numerika}
 \label{sec:numerika}
-\subsection{Gaussova eliminacija -- UNTESTED}
+\subsection{Gaussova eliminacija}
 \begin{description*}
-  \item[Vhod:] Matrika $A' = [A \ b]$, ki predstavlja $m\times n$ sistem $Ax = b$.
-  \item[Izhod:] Število rešitev: 0, 1, ali $\infty$ ter v primeru, da rešitev
-    obstaja, tudi $x$ (dolg $n$), ki reši sistem. Enačbo rešimo z $LU$ razcepom z delnim
-    pivotiranjem.
-  \item[Časovna zahtevnost:] $O(n^3)$
-  \item[Prostorska zahtevnost:] $O(n^2)$
+  \item[Vhod:] Matrika $A' = [A\ |\ b]$, ki predstavlja $m\times n$ sistem $Ax = b$.
+  \item[Izhod:] Vektor $x$ (dolg $n$), ki reši sistem. Poleg tega vrne tudi $-1$,
+    če rešitev ne obstaja, 0, če je enolična, sicer pa dimenzionalnost prostora
+    rešitev (tj.~število splošnih konstant). Enačbo rešimo z $LU$ razcepom z delnim
+    pivotiranjem. Druga funkcija izračuna determinanto matrike, prav tako z
+    uporabo delnega pivotiranja. Obe se da uporabiti z ulomki namesto z
+    decimalnimi števili ali pa po modulu $p$, kjer je potrebno deljenja
+    zamenjati z inverzi.
+  \item[Časovna zahtevnost:] $O(\min\{n, m\}nm)$
+  \item[Prostorska zahtevnost:] $O(nm)$
   \item[Testiranje na terenu:] TODO
 \end{description*}
-\cpp{num/gauss.cpp.yet}
-
-\subsection{Bisekcija} TODO
-\subsection{Tangentna metoda} TODO
+\cpp{num/gauss.cpp}
 
 \section{Teorija števil}
 \label{sec:ts}
