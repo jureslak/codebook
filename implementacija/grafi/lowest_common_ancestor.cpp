@@ -6,7 +6,7 @@ vector<vector<int>> preprocess(const vector<int>& parent) {
     while (1 << ++logn < n);
     vector<vector<int>> P(n, vector<int>(logn, -1));
 
-    for (int i = 0; i < n; i++)  // previ prednik za i je parent[i]
+    for (int i = 0; i < n; i++)  // prvi prednik za i je parent[i]
         P[i][0] = parent[i];
 
     for (int j = 1; 1 << j < n; j++)
@@ -27,6 +27,7 @@ vector<int> levels(const vector<int>& parent) {
     return L;
 }
 
+// supply returned values of `levels` and `preprocess` for L and P
 int find_lca(const vector<int>& parent, int u, int v,
              const vector<vector<int>>& P, const vector<int>& L) {
     if (L[u] < L[v])  // if u is on a higher level than v then we swap them
