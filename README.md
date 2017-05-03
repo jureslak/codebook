@@ -62,14 +62,22 @@ Pri uporabi `full_test.sh` je možno podati naslednje flage:
 
  * `-f [arg]` ali `--filter [arg]`, ki filtrira teste po imenu, da se izpišejo samo želeni testi.
 
-    $./full_test.sh -f Gcd*
+    `./full_test.sh -f Gcd*`
 
  * `-n` ali `--nostylecheck`, ki požene teste brez preverjanja stila kode (torej program precej hitrejši, ker preverjanje stila traja stoletja). Ob
    commitu se to še vedno preveri.
 
-    $./full_test.sh -n
+    `./full_test.sh -n`
 
 Možnosti sta seveda združljivi. Za hitrejše compilanje sem `.o` file pustil v mapicah. Če želite
 full recompilation jih lahko odstranite.
+
+
+Codebook je bil narejen v času delovanja ekipe Pitoni++ (Jure Slak, Maks Kolman, Žiga Gosar),
+UPM 2010 -- 2017, CERC 2012 -- 2016.
+
+Nekateri programi so povzeti po http://shygypsy.com/tools/ ali http://e-maxx.ru/algo.
+
+Morebitne napake sporočite na jure.slak@gmail.com, naredite issue ali pa kar pull request.
 
 Jure Slak
