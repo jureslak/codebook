@@ -21,7 +21,7 @@ double najblizji_tocki_divide(RAI s, RAI e, const vector<P>& py) {
     double d2 = najblizji_tocki_divide(s+m, e, py);
     double d = min(d1, d2);
     // merge
-    double meja = (s[m].real() + s[m+1].real()) / 2;
+    double meja = (s[m-1].real() + s[m].real()) / 2;
     int n = py.size();
     for (double i = 0; i < n; ++i) {
         if (meja-d < py[i].real() && py[i].real() <= meja+d) {
