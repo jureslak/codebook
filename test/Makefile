@@ -41,7 +41,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS)
 
 clean :
-	rm -f $(TESTS) gtest.a gtest_main.a *.o
+	rm -f $(TESTS) libgtest.a libgtest_main.a *.o
 
 # Builds gtest.a and gtest_main.a.
 
@@ -61,10 +61,10 @@ gtest_main.o : $(GTEST_SRCS_)
 	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
             $(GTEST_DIR)/src/gtest_main.cc
 
-gtest.a : gtest-all.o
+libgtest.a : gtest-all.o
 	$(AR) $(ARFLAGS) $@ $^
 
-gtest_main.a : gtest-all.o gtest_main.o
+libgtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
 # Builds a sample test.  A test should link with either gtest.a or
@@ -78,6 +78,6 @@ OBJ = $(SRC:%.cpp=%.o)
 tests : $(SRC) $(HDR) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(SRC)
 
-run_tests : $(OBJ) gtest_main.a gtest.a
+run_tests : $(OBJ) libgtest_main.a libgtest.a
 #  	rm $(OBJ)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ -lgtest_main -lgtest -lpthread
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ -lgtest_main -lgtest -lpthread -L.
