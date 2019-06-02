@@ -7,7 +7,7 @@
 using std::fill;
 using std::vector;
 
-int augmenting_path(const vector<vector<int>>& graf, int left);
+bool augmenting_path(const vector<vector<int>>& graf, int left);
 void mark_vertices(const vector<vector<int>>& graf, vector<bool>& cover, int v);
 int bipartite_matching(const vector<vector<int>>& graf, int left_num);
 vector<int> minimal_cover(const vector<vector<int>>& graf, int left_num);
